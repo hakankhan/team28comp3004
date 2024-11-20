@@ -173,18 +173,33 @@
      </widget>
     </widget>
     <widget class="QWidget" name="main">
-     <widget class="QStackedWidget" name="results_stack">
+     <widget class="QTabWidget" name="results_tabs">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>280</y>
+        <x>0</x>
+        <y>0</y>
         <width>801</width>
-        <height>541</height>
+        <height>581</height>
        </rect>
       </property>
-      <widget class="QWidget" name="diagram"/>
-      <widget class="QWidget" name="indicators"/>
-      <widget class="QWidget" name="recommendations"/>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="diagram">
+       <attribute name="title">
+        <string>diagram</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="indicators">
+       <attribute name="title">
+        <string>indicators</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="recommendations">
+       <attribute name="title">
+        <string>recommendations</string>
+       </attribute>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="scan"/>
