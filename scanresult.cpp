@@ -1,8 +1,24 @@
 #include "scanresult.h"
 
+/**
+ * @brief ScanResult::ScanResult
+ *
+ * Init all organs to NEUTRAL status
+ *
+ */
 ScanResult::ScanResult()
 {
-
+    stomach = NEUTRAL;
+    lungs = NEUTRAL;
+    heart = NEUTRAL;
+    small_intestine = NEUTRAL;
+    large_intestine = NEUTRAL;
+    spleen = NEUTRAL;
+    liver = NEUTRAL;
+    kidney = NEUTRAL;
+    bladder = NEUTRAL;
+    gall_bladder = NEUTRAL;
+    pericardium = NEUTRAL;
 }
 
 status ScanResult::get_stomach_status(){
@@ -89,3 +105,14 @@ void ScanResult::set_gall_bladder_status(status gb){
 void ScanResult::set_pericardium_status(status p){
     pericardium = p;
 }
+
+QDateTime ScanResult::get_time_of_scan(){
+    return time_of_scan;
+}
+
+void ScanResult::set_time_of_scan(QDateTime t){
+    time_of_scan = t;
+}
+
+//placeholder
+ScanResult::~ScanResult(){}

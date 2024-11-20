@@ -32,7 +32,7 @@ class ScanResult
         void set_pericardium_status(status);
 
         QDateTime get_time_of_scan();
-        void set_time_of_scan(QDateTime *);
+        void set_time_of_scan(QDateTime);
         ~ScanResult();
 
     private:

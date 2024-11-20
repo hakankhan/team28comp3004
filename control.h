@@ -24,6 +24,7 @@ class Control
 
     private:
         Profile* profiles[MAX_PROFILES];
+        Profile* current_profile;
         Battery* battery;
         Processor* processor;
 };

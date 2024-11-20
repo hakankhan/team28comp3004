@@ -1,24 +1,24 @@
 #ifndef PROFILE_H
 #define PROFILE_H
-#include <QDateTime>
+#include <QDate>
 #include <QString>
 
 class Profile
 {
     public:
         Profile();
-        Profile(QString, QString, int, int, QDateTime, QString);
+        Profile(QString, QString, int, int, QDate, QString);
         void set_first_name(QString);
         void set_last_name(QString);
         void set_height(int);
         void set_weight(int);
-        void set_birthday(QDateTime);
+        void set_birthday(QDate);
         void set_country(QString);
         QString get_first_name();
         QString get_last_name();
         int get_height();
         int get_weight();
-        QDateTime get_birthday();
+        QDate get_birthday();
         QString get_country();
         ~Profile();
 
@@ -27,7 +27,7 @@ class Profile
         QString last_name;
         int height;
         int weight;
-        QDateTime birthday;
+        QDate birthday;
         QString country;
 };
 
