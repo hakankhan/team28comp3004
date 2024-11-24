@@ -19,6 +19,9 @@ ScanResult::ScanResult()
     bladder = NEUTRAL;
     gall_bladder = NEUTRAL;
     pericardium = NEUTRAL;
+    lymph = NEUTRAL;
+    pancreas = NEUTRAL;
+    adrenal_glands = NEUTRAL;
 }
 
 status ScanResult::get_stomach_status(){
@@ -61,6 +64,18 @@ status ScanResult::get_gall_bladder_status(){
 
 status ScanResult::get_pericardium_status(){
     return pericardium;
+}
+
+status ScanResult::get_lymph_status(){
+    return lymph;
+}
+
+status ScanResult::get_pancreas_status(){
+    return pancreas;
+}
+
+status ScanResult::get_adrenal_glands_status(){
+    return adrenal_glands;
 }
 
 void ScanResult::set_stomach_status(status s){
@@ -106,6 +121,18 @@ void ScanResult::set_pericardium_status(status p){
     pericardium = p;
 }
 
+void ScanResult::set_lymph_status(status l){
+    lymph = l;
+}
+
+void ScanResult::set_pancreas_status(status p){
+    pancreas = p;
+}
+
+void ScanResult::set_adrenal_glands_status(status a){
+    adrenal_glands = a;
+}
+
 QDateTime ScanResult::get_time_of_scan(){
     return time_of_scan;
 }
@@ -113,6 +140,8 @@ QDateTime ScanResult::get_time_of_scan(){
 void ScanResult::set_time_of_scan(QDateTime t){
     time_of_scan = t;
 }
+
+
 
 //placeholder
 ScanResult::~ScanResult(){}

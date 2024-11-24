@@ -2,6 +2,7 @@
 #define PROFILE_H
 #include <QDate>
 #include <QString>
+#include "records.h"
 
 class Profile
 {
@@ -20,6 +21,8 @@ class Profile
         int get_weight();
         QDate get_birthday();
         QString get_country();
+        Records* get_history();
+        void set_history(Records*);
         ~Profile();
 
     private:
@@ -29,6 +32,7 @@ class Profile
         int weight;
         QDate birthday;
         QString country;
+        Records* history;
 };
 
 #endif // PROFILE_H

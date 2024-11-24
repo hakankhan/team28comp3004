@@ -19,6 +19,9 @@ class ScanResult
         status get_bladder_status();
         status get_gall_bladder_status();
         status get_pericardium_status();
+        status get_lymph_status();
+        status get_pancreas_status();
+        status get_adrenal_glands_status();
         void set_stomach_status(status);
         void set_lungs_status(status);
         void set_heart_status(status);
@@ -30,6 +33,9 @@ class ScanResult
         void set_bladder_status(status);
         void set_gall_bladder_status(status);
         void set_pericardium_status(status);
+        void set_lymph_status(status);
+        void set_pancreas_status(status);
+        void set_adrenal_glands_status(status);
 
         QDateTime get_time_of_scan();
         void set_time_of_scan(QDateTime);
@@ -48,6 +54,9 @@ class ScanResult
         status bladder;
         status gall_bladder;
         status pericardium;
+        status lymph;
+        status pancreas;
+        status adrenal_glands;
 };
 
 #endif // SCANRESULT_H
