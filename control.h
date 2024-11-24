@@ -19,7 +19,7 @@ class Control
         void switch_to_profile_at_index(int);
         void set_profile_at_index(int, Profile *);
         Profile* get_profile_at_index(int);
-        void perform_action();
+        void deplete_battery();
         ~Control();
 
     private:
