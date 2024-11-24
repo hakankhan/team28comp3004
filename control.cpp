@@ -44,7 +44,8 @@ Profile* Control::get_profile_at_index(int i){
  * The function which decrements the battery percentage when actions are performed
  *
  */
-void Control::perform_action(){
+void Control::deplete_battery(){
+    battery->set_percentage(battery->get_percentage() - 5);
     //todo, how much to decrement battery by? also maybe rename function
 }
 
