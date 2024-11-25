@@ -9,8 +9,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->main_stack->setCurrentIndex(0);
     ui->results_tabs->setCurrentIndex(0);
     c = new Control();
+    for(int i = 0; i < MAX_PROFILES; i++){
+        index_to_profile[i] = NULL;
+    }
     connect(ui->submit_button, SIGNAL(clicked()), this, SLOT(submit_button_clicked()));
-    connect(ui->switch_profile_box, SIGNAL(currentIndexChanged(int)), this, SLOT(profile_changed()));
+    connect(ui->switch_profile_box, SIGNAL(activated(int)), this, SLOT(profile_changed()));
     connect(ui->new_profile_button, SIGNAL(clicked()), this, SLOT(new_profile_button_clicked()));
 }
 
@@ -20,8 +23,10 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::profile_changed(){
-    //
     qInfo("changed");
+    qInfo("old profile id: %d", c->get_current_profile()->get_id());
+    c->set_current_profile(index_to_profile[ui->switch_profile_box->currentIndex()]->get_id());
+    qInfo("current profile id: %d", c->get_current_profile()->get_id());
 }
 
 void MainWindow::submit_button_clicked()
@@ -39,14 +44,17 @@ void MainWindow::submit_button_clicked()
 
     ui->switch_profile_box->clear();
 
-    int num_list_elements = 0;
+    int num_list_elements = -1;
     for(int i = 0; i < MAX_PROFILES; i++){
         Profile* p = c->get_profiles()[i];
+        num_list_elements++;
         if(p != NULL){
-            index_to_profile[num_list_elements++] = p;
+            index_to_profile[num_list_elements] = p;
             ui->switch_profile_box->addItem("Profile " + QString::number(num_list_elements) + ": " + p->get_first_name());
             continue;
         }
+
+        index_to_profile[num_list_elements] = NULL;
     }
 }
 
