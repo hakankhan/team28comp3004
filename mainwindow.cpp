@@ -22,6 +22,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::new_profile_button_clicked(){
+    ui->main_stack->setCurrentIndex(0);
+}
+
 void MainWindow::profile_changed(){
     qInfo("changed");
     qInfo("old profile id: %d", c->get_current_profile()->get_id());
