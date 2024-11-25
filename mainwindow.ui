@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="profile">
      <widget class="QFrame" name="frame">
@@ -197,7 +197,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QComboBox" name="switch_profile_button">
+      <widget class="QComboBox" name="switch_profile_box">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -352,6 +352,16 @@
        <attribute name="title">
         <string>indicators</string>
        </attribute>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>781</width>
+          <height>471</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="recommendations">
        <attribute name="title">
