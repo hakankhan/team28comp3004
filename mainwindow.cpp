@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     c = new Control();
     connect(ui->submit_button, SIGNAL(clicked()), this, SLOT(submit_button_clicked()));
     connect(ui->switch_profile_box, SIGNAL(currentIndexChanged(int)), this, SLOT(profile_changed()));
+    connect(ui->new_profile_button, SIGNAL(clicked()), this, SLOT(new_profile_button_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -47,5 +48,9 @@ void MainWindow::submit_button_clicked()
             continue;
         }
     }
+}
+
+void MainWindow::new_profile_button_clicked(){
+    ui->main_stack->setCurrentIndex(0);
 }
 
