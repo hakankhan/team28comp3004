@@ -47,7 +47,7 @@ class Processor
         ~Processor();
     private:
         Sensor* sensor;
-        status* get_sensor_data();
+        status* get_sensor_data(status*);
 };
 
 #endif // PROCESSOR_H

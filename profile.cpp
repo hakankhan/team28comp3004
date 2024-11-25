@@ -11,14 +11,14 @@ Profile::Profile()
     history = NULL;
 }
 
-Profile::Profile(QString fname, QString lname, int h, int w, QDate bd, QString c, Records* h){
+Profile::Profile(QString fname, QString lname, int h, int w, QDate bd, QString c, Records* his){
     first_name = fname;
     last_name = lname;
     height = h;
     weight = w;
     birthday = bd;
     country = c;
-    history = h;
+    history = his;
 }
 
 void Profile::set_first_name(QString f){

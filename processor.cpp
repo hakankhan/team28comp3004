@@ -16,7 +16,8 @@ Processor::Processor()
  * @return ScanResult, the result of the scan
  */
 ScanResult* Processor::perform_scan(){
-    status* sensor_data = get_sensor_data();
+    status sensor_data[24];
+    get_sensor_data(sensor_data);
     ScanResult* result = new ScanResult();
 
     //set lungs
@@ -72,9 +73,7 @@ ScanResult* Processor::perform_scan(){
     return result;
 }
 
-status* Processor::get_sensor_data(){
-
-    status sensor_data[24];
+status* Processor::get_sensor_data(status* sensor_data){
 
     for(int i = 0; i < 24; i++){
         double value = sensor->get_value_at_index(i);

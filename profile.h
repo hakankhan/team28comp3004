@@ -8,7 +8,7 @@ class Profile
 {
     public:
         Profile();
-        Profile(QString, QString, int, int, QDate, QString);
+        Profile(QString, QString, int, int, QDate, QString, Records*);
         void set_first_name(QString);
         void set_last_name(QString);
         void set_height(int);
