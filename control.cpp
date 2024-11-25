@@ -34,8 +34,8 @@ void Control::set_profile_at_index(int i, Profile* p){
     profiles[i] = p;
 }
 
-Profile* Control::get_profile_at_index(int i){
-    return profiles[i];
+Profile* Control::get_current_profile(){
+    return current_profile;
 }
 
 /**

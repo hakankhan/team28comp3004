@@ -18,7 +18,7 @@ class Control
         Processor* get_processor();
         void switch_to_profile_at_index(int);
         void set_profile_at_index(int, Profile *);
-        Profile* get_profile_at_index(int);
+        Profile* get_current_profile();
         void deplete_battery();
         ~Control();
 
