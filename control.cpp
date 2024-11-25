@@ -45,6 +45,14 @@ void Control::delete_profile(int id){
     for(int i = 0; i < MAX_PROFILES; i++){
         if(profiles[i]->get_id() == id){
             profiles[i] = NULL;
+            if(current_profile->get_id() == id){
+                for(int j = 0; j < MAX_PROFILES; j++){
+                    if(profiles[j] != NULL){
+                        current_profile = profiles[j];
+                        return;
+                    }
+                }
+            }
             return;
         }
     }
@@ -101,4 +109,14 @@ Control::~Control(){
 
     delete battery;
     delete processor;
+}
+
+bool Control::more_than_one_profile(){
+    int count = 0;
+    for(int i = 0; i < MAX_PROFILES; i++){
+        if(profiles[i] != NULL){
+            count++;
+        }
+    }
+    return count > 1;
 }

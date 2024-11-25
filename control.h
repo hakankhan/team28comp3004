@@ -19,6 +19,7 @@ class Control
         void add_profile(QString, QString, QDate, int, int);
         void delete_profile(int);
         void set_current_profile(int);
+        bool more_than_one_profile();
         Profile* get_current_profile();
         Profile** get_profiles();
         void deplete_battery();

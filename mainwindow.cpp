@@ -66,6 +66,23 @@ void MainWindow::submit_button_clicked()
 
 void MainWindow::delete_profile(){
     int id_to_delete = c->get_current_profile()->get_id();
+    if(!c->more_than_one_profile()){
+        ui->main_stack->setCurrentIndex(0);
+        c->delete_profile(id_to_delete);
+        return;
+    }
     c->delete_profile(id_to_delete);
-    ui->main_stack->setCurrentIndex(0);
+    int num_list_elements = -1;
+    ui->switch_profile_box->clear();
+    for(int i = 0; i < MAX_PROFILES; i++){
+        Profile* p = c->get_profiles()[i];
+        num_list_elements++;
+        if(p != NULL){
+            index_to_profile[num_list_elements] = p;
+            ui->switch_profile_box->addItem("Profile " + QString::number(num_list_elements) + ": " + p->get_first_name());
+            continue;
+        }
+
+        index_to_profile[num_list_elements] = NULL;
+    }
 }
