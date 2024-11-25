@@ -20,6 +20,7 @@ private slots:
         void submit_button_clicked();
         void profile_changed();
         void new_profile_button_clicked();
+        void delete_profile();
 
 private:
         Ui::MainWindow *ui;

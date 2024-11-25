@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->submit_button, SIGNAL(clicked()), this, SLOT(submit_button_clicked()));
     connect(ui->switch_profile_box, SIGNAL(activated(int)), this, SLOT(profile_changed()));
     connect(ui->new_profile_button, SIGNAL(clicked()), this, SLOT(new_profile_button_clicked()));
+    connect(ui->delete_profile_button, SIGNAL(clicked()), this, SLOT(delete_profile()));
 }
 
 MainWindow::~MainWindow()
@@ -49,6 +50,7 @@ void MainWindow::submit_button_clicked()
 
 
     int num_list_elements = -1;
+    ui->switch_profile_box->clear();
     for(int i = 0; i < MAX_PROFILES; i++){
         Profile* p = c->get_profiles()[i];
         num_list_elements++;
@@ -62,3 +64,8 @@ void MainWindow::submit_button_clicked()
     }
 }
 
+void MainWindow::delete_profile(){
+    int id_to_delete = c->get_current_profile()->get_id();
+    c->delete_profile(id_to_delete);
+    ui->main_stack->setCurrentIndex(0);
+}
