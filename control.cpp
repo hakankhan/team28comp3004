@@ -63,6 +63,12 @@ void Control::set_current_profile(int id){
     qInfo("Profile not found - set current profile");
 }
 
+
+Profile** Control::get_profiles(){
+    return profiles;
+}
+
+
 /**
  * @brief Control::perform_action
  *

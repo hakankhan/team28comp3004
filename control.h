@@ -20,6 +20,7 @@ class Control
         void delete_profile(int);
         void set_current_profile(int);
         Profile* get_current_profile();
+        Profile** get_profiles();
         void deplete_battery();
         ~Control();
 

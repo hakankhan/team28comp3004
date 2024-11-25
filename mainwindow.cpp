@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->main_stack->setCurrentIndex(0);
     ui->results_tabs->setCurrentIndex(0);
     c = new Control();
-    connect(ui->submit_button, SIGNAL(released()), this, SLOT(on_submit_button_clicked()));
+    connect(ui->submit_button, SIGNAL(clicked()), this, SLOT(on_submit_button_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -30,8 +30,19 @@ void MainWindow::on_submit_button_clicked()
 
     ui->main_stack->setCurrentIndex(1);
 
-    for(int i = 0; i < MAX_PROFILES; i++){
 
+
+    int num_list_elements = 0;
+    for(int i = 0; i < MAX_PROFILES; i++){
+        Profile* p = c->get_profiles()[i];
+        qInfo("Profiles array element:");
+        qInfo("i = %d", i);
+        if(p != NULL){
+            qInfo("Not null!");
+            index_to_profile[num_list_elements++] = p;
+            ui->switch_profile_box->addItem("Profile " + QString(num_list_elements) + ": " + p->get_first_name());
+            continue;
+        }
     }
 }
 
