@@ -7,18 +7,18 @@ Profile::Profile()
     height = -1;
     weight = -1;
     birthday = QDate();
-    country = "";
     history = NULL;
+    id = -1;
 }
 
-Profile::Profile(QString fname, QString lname, int h, int w, QDate bd, QString c, Records* his){
+Profile::Profile(QString fname, QString lname, int h, int w, QDate bd, Records* his, int i){
     first_name = fname;
     last_name = lname;
     height = h;
     weight = w;
     birthday = bd;
-    country = c;
     history = his;
+    id = i;
 }
 
 void Profile::set_first_name(QString f){
@@ -41,10 +41,6 @@ void Profile::set_birthday(QDate b){
     birthday = b;
 }
 
-void Profile::set_country(QString c){
-    country = c;
-}
-
 QString* Profile::get_first_name(){
     return &first_name;
 }
@@ -65,16 +61,16 @@ QDate* Profile::get_birthday(){
     return &birthday;
 }
 
-QString* Profile::get_country(){
-    return &country;
-}
-
 Records* Profile::get_history(){
     return history;
 }
 
 void Profile::set_history(Records* h){
     history = h;
+}
+
+int Profile::get_id(){
+    return id;
 }
 
 //placeholder

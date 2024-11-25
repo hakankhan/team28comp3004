@@ -16,6 +16,7 @@ Control::Control()
 
     battery = new Battery();
     processor = new Processor();
+    next_id = 0;
 }
 
 Battery* Control::get_battery(){
@@ -26,16 +27,34 @@ Processor* Control::get_processor(){
     return processor;
 }
 
-void Control::switch_to_profile_at_index(int i){
-    current_profile = profiles[i];
+void Control::add_profile(QString fname, QString lname, QDate bd, int h, int w){
+    Profile* p = new Profile(fname, lname, h, w, bd, NULL, next_id++);
+
+    for(int i = 0; i < MAX_PROFILES; i++){
+        if(profiles[i] == NULL){
+            profiles[i] = p;
+            current_profile = p;
+            return;
+        }
+    }
+
+    qInfo("Max profiles made already");
 }
 
-void Control::set_profile_at_index(int i, Profile* p){
-    profiles[i] = p;
+void Control::delete_profile(int id){
+    for(int i = 0; i < MAX_PROFILES; i++){
+        if(profiles[i]->get_id() == id){
+            profiles[i] = NULL;
+        }
+    }
 }
 
-Profile* Control::get_current_profile(){
-    return current_profile;
+void Control::set_current_profile(int id){
+    for(int i = 0; i < MAX_PROFILES; i++){
+        if(profiles[i]->get_id() == id){
+            current_profile = profiles[i];
+        }
+    }
 }
 
 /**
@@ -48,6 +67,8 @@ void Control::deplete_battery(){
     battery->set_percentage(battery->get_percentage() - 5);
     //todo, how much to decrement battery by? also maybe rename function
 }
+
+
 
 /**
  * @brief Control::~Control

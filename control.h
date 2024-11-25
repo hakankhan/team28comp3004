@@ -16,8 +16,9 @@ class Control
         Control();
         Battery* get_battery();
         Processor* get_processor();
-        void switch_to_profile_at_index(int);
-        void set_profile_at_index(int, Profile *);
+        void add_profile(QString, QString, QDate, int, int);
+        void delete_profile(int);
+        void set_current_profile(int);
         Profile* get_current_profile();
         void deplete_battery();
         ~Control();
@@ -27,6 +28,7 @@ class Control
         Profile* current_profile;
         Battery* battery;
         Processor* processor;
+        int next_id;
 };
 
 #endif // CONTROL_H
