@@ -22,6 +22,6 @@ private slots:
 private:
         Ui::MainWindow *ui;
         Control* c;
-        Profile* map[MAX_PROFILES];
+        Profile* indexToProfile[MAX_PROFILES];
 };
 #endif // MAINWINDOW_H

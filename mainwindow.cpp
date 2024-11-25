@@ -29,5 +29,9 @@ void MainWindow::on_submit_button_clicked()
     c->add_profile(fname, lname, bd, height, weight);
 
     ui->main_stack->setCurrentIndex(1);
+
+    for(int i = 0; i < MAX_PROFILES; i++){
+
+    }
 }
 
