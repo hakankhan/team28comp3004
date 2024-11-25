@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="profile">
      <widget class="QFrame" name="frame">
@@ -182,25 +182,12 @@
      </widget>
     </widget>
     <widget class="QWidget" name="main">
-     <widget class="QPushButton" name="new_scan_button">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>210</y>
-        <width>83</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>New Scan</string>
-      </property>
-     </widget>
      <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>371</width>
+        <width>421</width>
         <height>51</height>
        </rect>
       </property>
@@ -210,7 +197,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QComboBox" name="switch_profile">
+      <widget class="QComboBox" name="switch_profile_button">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -225,7 +212,7 @@
         </property>
        </item>
       </widget>
-      <widget class="QPushButton" name="edit_profile">
+      <widget class="QPushButton" name="new_profile_button">
        <property name="geometry">
         <rect>
          <x>150</x>
@@ -235,13 +222,13 @@
         </rect>
        </property>
        <property name="text">
-        <string>Edit</string>
+        <string>New</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="delete_profile">
+      <widget class="QPushButton" name="delete_profile_button">
        <property name="geometry">
         <rect>
-         <x>240</x>
+         <x>330</x>
          <y>20</y>
          <width>83</width>
          <height>25</height>
@@ -264,7 +251,74 @@
         <string>Profiles</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="edit_profile_button">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>83</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Edit</string>
+       </property>
+      </widget>
      </widget>
+     <widget class="QFrame" name="frame_3">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>110</y>
+        <width>601</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QListWidget" name="scan_results_list">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>581</width>
+         <height>271</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>91</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Scan Results</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="new_scan_button">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>0</y>
+         <width>83</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>New Scan</string>
+       </property>
+      </widget>
+     </widget>
+     <zorder>frame_3</zorder>
+     <zorder>frame_2</zorder>
     </widget>
     <widget class="QWidget" name="results">
      <widget class="QTabWidget" name="results_tabs">
@@ -273,7 +327,7 @@
         <x>0</x>
         <y>0</y>
         <width>801</width>
-        <height>581</height>
+        <height>531</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -305,8 +359,35 @@
        </attribute>
       </widget>
      </widget>
+     <widget class="QPushButton" name="return_button">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>530</y>
+        <width>83</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Return</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="scan"/>
+    <widget class="QWidget" name="scan">
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>520</y>
+        <width>83</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
