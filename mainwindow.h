@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 
 private slots:
         void submit_button_clicked();
+        void profile_changed();
 
 private:
         Ui::MainWindow *ui;

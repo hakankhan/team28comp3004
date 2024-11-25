@@ -10,11 +10,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->results_tabs->setCurrentIndex(0);
     c = new Control();
     connect(ui->submit_button, SIGNAL(clicked()), this, SLOT(submit_button_clicked()));
+    connect(ui->switch_profile_box, SIGNAL(currentIndexChanged(int)), this, SLOT(profile_changed()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::profile_changed(){
+    //
+    qInfo("changed");
 }
 
 void MainWindow::submit_button_clicked()
