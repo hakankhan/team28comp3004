@@ -45,12 +45,12 @@ void Profile::set_country(QString c){
     country = c;
 }
 
-QString Profile::get_first_name(){
-    return first_name;
+QString* Profile::get_first_name(){
+    return &first_name;
 }
 
-QString Profile::get_last_name(){
-    return last_name;
+QString* Profile::get_last_name(){
+    return &last_name;
 }
 
 int Profile::get_height(){
@@ -61,12 +61,12 @@ int Profile::get_weight(){
     return weight;
 }
 
-QDate Profile::get_birthday(){
-    return birthday;
+QDate* Profile::get_birthday(){
+    return &birthday;
 }
 
-QString Profile::get_country(){
-    return country;
+QString* Profile::get_country(){
+    return &country;
 }
 
 Records* Profile::get_history(){
