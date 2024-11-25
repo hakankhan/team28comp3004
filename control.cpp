@@ -45,16 +45,22 @@ void Control::delete_profile(int id){
     for(int i = 0; i < MAX_PROFILES; i++){
         if(profiles[i]->get_id() == id){
             profiles[i] = NULL;
+            return;
         }
     }
+
+    qInfo("Profile not found - delete profile");
 }
 
 void Control::set_current_profile(int id){
     for(int i = 0; i < MAX_PROFILES; i++){
         if(profiles[i]->get_id() == id){
             current_profile = profiles[i];
+            return;
         }
     }
+
+    qInfo("Profile not found - set current profile");
 }
 
 /**

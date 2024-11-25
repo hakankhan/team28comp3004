@@ -9,13 +9,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->main_stack->setCurrentIndex(0);
     ui->results_tabs->setCurrentIndex(0);
     c = new Control();
+    connect(ui->submit_button, SIGNAL(released()), this, SLOT(on_submit_button_clicked()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_submit_button_clicked()
 {
