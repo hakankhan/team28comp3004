@@ -16,15 +16,19 @@ class MainWindow : public QMainWindow
         MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
 
-private slots:
+    private slots:
         void submit_button_clicked();
         void profile_changed();
         void new_profile_button_clicked();
+        void edit_profile_button_clicked();
+        void edit_profile_submission();
         void delete_profile();
 
-private:
+    private:
         Ui::MainWindow *ui;
         Control* c;
         Profile* index_to_profile[MAX_PROFILES];
+        void make_profile_dropdown();
+        int current_index_dropdown;
 };
 #endif // MAINWINDOW_H
