@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="profile">
      <widget class="QFrame" name="frame">
@@ -560,7 +560,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="scan">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="submit_scan_button">
       <property name="geometry">
        <rect>
         <x>710</x>
@@ -570,10 +570,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Submit</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="scan_table">
+     <widget class="QTableView" name="tableView">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -582,81 +582,6 @@
         <height>501</height>
        </rect>
       </property>
-      <row>
-       <property name="text">
-        <string>Left</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>2</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>3</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>4</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>5</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>6</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <row>
-       <property name="text">
-        <string>New Row</string>
-       </property>
-      </row>
-      <column>
-       <property name="text">
-        <string>Left</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Right</string>
-       </property>
-      </column>
      </widget>
     </widget>
    </widget>
