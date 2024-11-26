@@ -2,7 +2,7 @@
 
 Processor::Processor()
 {
-    sensor = NULL;
+    sensor = new Sensor();
 }
 
 /**

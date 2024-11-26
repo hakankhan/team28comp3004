@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 #include "control.h"
-#include <QStyledItemDelegate>
+#include <QDoubleSpinBox>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,13 +26,16 @@ class MainWindow : public QMainWindow
         void new_profile_button_clicked();
         void edit_profile_button_clicked();
         void edit_profile_submission();
+        void scan_button_clicked();
         void delete_profile();
+        void submit_scan_button_clicked();
 
     private:
         Ui::MainWindow *ui;
         Control* c;
         Profile* index_to_profile[MAX_PROFILES];
         void make_profile_dropdown();
+        QVector<QDoubleSpinBox*> make_spinbox_vector();
         int current_index_dropdown;
 };
 #endif // MAINWINDOW_H

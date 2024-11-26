@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->delete_profile_button, SIGNAL(clicked()), this, SLOT(delete_profile()));
     connect(ui->edit_profile_button, SIGNAL(clicked()), this, SLOT(edit_profile_button_clicked()));
     connect(ui->edit_submit_button, SIGNAL(clicked()), this, SLOT(edit_profile_submission()));
+    connect(ui->new_scan_button, SIGNAL(clicked()), this, SLOT(scan_button_clicked()));
+    connect(ui->submit_scan_button, SIGNAL(clicked()), this, SLOT(submit_scan_button_clicked()));
+    srand(time(0));
 }
 
 MainWindow::~MainWindow()
@@ -124,4 +127,54 @@ void MainWindow::delete_profile(){
     }
     c->delete_profile(id_to_delete);
     make_profile_dropdown();
+}
+
+void MainWindow::scan_button_clicked(){
+    QVector<QDoubleSpinBox*> spinboxes = make_spinbox_vector();
+    Sensor* s = c->get_processor()->get_sensor();
+    for(int i = 0; i < 24; i++){
+        s->set_value_at_index(i, rand() % 12 + 1);
+        spinboxes[i]->setValue(s->get_value_at_index(i));
+    }
+    ui->main_stack->setCurrentIndex(4);
+}
+
+QVector<QDoubleSpinBox*> MainWindow::make_spinbox_vector(){
+    QVector<QDoubleSpinBox*> spinboxes;
+    spinboxes.push_back(ui->LH1_box);
+    spinboxes.push_back(ui->LH2_box);
+    spinboxes.push_back(ui->LH3_box);
+    spinboxes.push_back(ui->LH4_box);
+    spinboxes.push_back(ui->LH5_box);
+    spinboxes.push_back(ui->LH6_box);
+    spinboxes.push_back(ui->RH1_box);
+    spinboxes.push_back(ui->RH2_box);
+    spinboxes.push_back(ui->RH3_box);
+    spinboxes.push_back(ui->RH4_box);
+    spinboxes.push_back(ui->RH5_box);
+    spinboxes.push_back(ui->RH6_box);
+    spinboxes.push_back(ui->LF1_box);
+    spinboxes.push_back(ui->LF2_box);
+    spinboxes.push_back(ui->LF3_box);
+    spinboxes.push_back(ui->LF4_box);
+    spinboxes.push_back(ui->LF5_box);
+    spinboxes.push_back(ui->LF6_box);
+    spinboxes.push_back(ui->RF1_box);
+    spinboxes.push_back(ui->RF2_box);
+    spinboxes.push_back(ui->RF3_box);
+    spinboxes.push_back(ui->RF4_box);
+    spinboxes.push_back(ui->RF5_box);
+    spinboxes.push_back(ui->RF6_box);
+    return spinboxes;
+}
+
+void MainWindow::submit_scan_button_clicked(){
+    QVector<QDoubleSpinBox*> spinboxes = make_spinbox_vector();
+    Sensor* s = c->get_processor()->get_sensor();
+    for(int i = 0; i < 24; i++){
+        s->set_value_at_index(i, spinboxes[i]->value());
+    }
+    ui->main_stack->setCurrentIndex(1); //TODO: Hakan fix this make it go to results and perform scan here
+    ScanResult* result = c->get_processor()->perform_scan();
+    //TODO: Add this to the current profile record and display it
 }
