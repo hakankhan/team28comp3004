@@ -11,6 +11,7 @@ class Records
         Records();
         vector<ScanResult*> get_past_results();
         void add_result(ScanResult *);
+        int get_num_past_results();
         ~Records();
     private:
         int num_past_results;

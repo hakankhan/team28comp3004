@@ -10,6 +10,18 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -24,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="profile">
      <widget class="QFrame" name="frame">
@@ -507,13 +519,13 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="diagram">
        <attribute name="title">
         <string>diagram</string>
        </attribute>
-       <widget class="QGraphicsView" name="graphicsView">
+       <widget class="QGraphicsView" name="diagram_graphics">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -528,15 +540,93 @@
        <attribute name="title">
         <string>indicators</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget">
+       <widget class="QTableWidget" name="results_table">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>781</width>
-          <height>471</height>
+          <width>211</width>
+          <height>451</height>
          </rect>
         </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>Lungs</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>New Row</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Pericardium</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Liver</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Gall Bladder</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Stomach</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Spleen</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Pancreas</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Kidneys</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Adrenal Glands</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Large Intestine</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>New Row</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Bladder</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>Lymph Nodes</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Value</string>
+         </property>
+        </column>
        </widget>
       </widget>
       <widget class="QWidget" name="recommendations">

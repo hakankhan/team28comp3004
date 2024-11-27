@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->main_stack->setCurrentIndex(0);
+    ui->main_stack->setCurrentIndex(CREATE_PROFILE_PAGE_ID);
     ui->results_tabs->setCurrentIndex(0);
     c = new Control();
     for(int i = 0; i < MAX_PROFILES; i++){
@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->edit_submit_button, SIGNAL(clicked()), this, SLOT(edit_profile_submission()));
     connect(ui->new_scan_button, SIGNAL(clicked()), this, SLOT(scan_button_clicked()));
     connect(ui->submit_scan_button, SIGNAL(clicked()), this, SLOT(submit_scan_button_clicked()));
+    connect(ui->scan_results_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(display_scan_results(QListWidgetItem*)));
     srand(time(0));
 }
 
@@ -50,7 +51,7 @@ void MainWindow::make_profile_dropdown(){
 void MainWindow::edit_profile_button_clicked(){
     current_index_dropdown = ui->switch_profile_box->currentIndex();
 
-    ui->main_stack->setCurrentIndex(2);
+    ui->main_stack->setCurrentIndex(EDIT_PROFILE_PAGE_ID);
 
     Profile* p = c->get_current_profile();;
 
@@ -70,7 +71,7 @@ void MainWindow::edit_profile_submission(){
     p->set_weight(ui->edit_weight->value());
     p->set_birthday(ui->edit_birthday->date());
 
-    ui->main_stack->setCurrentIndex(1);
+    ui->main_stack->setCurrentIndex(MAIN_PAGE_ID);
 
     make_profile_dropdown();
 }
@@ -83,7 +84,7 @@ void MainWindow::new_profile_button_clicked(){
             break;
         }
     }
-    ui->main_stack->setCurrentIndex(0);
+    ui->main_stack->setCurrentIndex(CREATE_PROFILE_PAGE_ID);
 
     ui->first_name->clear();
     ui->last_name->clear();
@@ -110,7 +111,7 @@ void MainWindow::submit_button_clicked()
 
     c->add_profile(fname, lname, bd, height, weight);
 
-    ui->main_stack->setCurrentIndex(1);
+    ui->main_stack->setCurrentIndex(MAIN_PAGE_ID);
     if(current_index_dropdown == -1){
         current_index_dropdown = 0;
     }
@@ -121,7 +122,7 @@ void MainWindow::delete_profile(){
     current_index_dropdown = 0;
     int id_to_delete = c->get_current_profile()->get_id();
     if(!c->more_than_one_profile()){
-        ui->main_stack->setCurrentIndex(0);
+        ui->main_stack->setCurrentIndex(CREATE_PROFILE_PAGE_ID);
         c->delete_profile(id_to_delete);
         return;
     }
@@ -136,7 +137,7 @@ void MainWindow::scan_button_clicked(){
         s->set_value_at_index(i, rand() % 12 + 1);
         spinboxes[i]->setValue(s->get_value_at_index(i));
     }
-    ui->main_stack->setCurrentIndex(4);
+    ui->main_stack->setCurrentIndex(SCAN_PAGE_ID);
 }
 
 QVector<QDoubleSpinBox*> MainWindow::make_spinbox_vector(){
@@ -174,7 +175,22 @@ void MainWindow::submit_scan_button_clicked(){
     for(int i = 0; i < 24; i++){
         s->set_value_at_index(i, spinboxes[i]->value());
     }
-    ui->main_stack->setCurrentIndex(1); //TODO: Hakan fix this make it go to results and perform scan here
+
+    ui->main_stack->setCurrentIndex(MAIN_PAGE_ID);
+    qInfo("test 1");
     ScanResult* result = c->get_processor()->perform_scan();
-    //TODO: Add this to the current profile record and display it
+    qInfo("test 2");
+    c->get_current_profile()->add_result(result);
+    qInfo("test 3");
+    qInfo("made scan %d", c->get_current_profile()->get_history()->get_num_past_results());
+    ui->scan_results_list->addItem("Record #" + QString::number(c->get_current_profile()->get_history()->get_num_past_results()));
+}
+
+void MainWindow::display_scan_results(QListWidgetItem *item){
+    //TODO: push results to display in tabs
+    int itemID = item->text().split("#")[1].toInt() - 1;
+    qInfo() << "opening record" << itemID;
+    ui->main_stack->setCurrentIndex(RESULTS_PAGE_ID);
+
+//    ui->results_table
 }

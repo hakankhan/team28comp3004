@@ -3,8 +3,6 @@
 Records::Records()
 {
     num_past_results = 0;
-    //init collection to null pointer
-    past_results = {};
 }
 
 vector<ScanResult*> Records::get_past_results(){
@@ -14,6 +12,10 @@ vector<ScanResult*> Records::get_past_results(){
 void Records::add_result(ScanResult* s){
     past_results.push_back(s);
     num_past_results++;
+}
+
+int Records::get_num_past_results(){
+    return num_past_results;
 }
 
 /**

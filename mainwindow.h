@@ -6,6 +6,17 @@
 #include <QDoubleSpinBox>
 #include <cstdlib>
 #include <ctime>
+#include <QListWidget>
+#include <QDebug>
+
+enum pages {
+    CREATE_PROFILE_PAGE_ID = 0,
+    MAIN_PAGE_ID = 1,
+    EDIT_PROFILE_PAGE_ID = 2,
+    RESULTS_PAGE_ID = 3,
+    SCAN_PAGE_ID = 4
+};
+
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -29,7 +40,7 @@ class MainWindow : public QMainWindow
         void scan_button_clicked();
         void delete_profile();
         void submit_scan_button_clicked();
-
+        void display_scan_results(QListWidgetItem *item);
     private:
         Ui::MainWindow *ui;
         Control* c;

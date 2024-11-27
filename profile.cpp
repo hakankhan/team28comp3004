@@ -7,7 +7,7 @@ Profile::Profile()
     height = -1;
     weight = -1;
     birthday = QDate();
-    history = NULL;
+    history = nullptr;
     id = -1;
 }
 
@@ -67,6 +67,13 @@ Records* Profile::get_history(){
 
 void Profile::set_history(Records* h){
     history = h;
+}
+
+void Profile::add_result(ScanResult* s){
+    if(history == nullptr){
+        history = new Records();
+    }
+    history->add_result(s);
 }
 
 int Profile::get_id(){
