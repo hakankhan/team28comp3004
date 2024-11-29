@@ -76,6 +76,10 @@ void Profile::add_result(ScanResult* s){
     history->add_result(s);
 }
 
+ScanResult* Profile::get_result(int index){
+    return history->get_past_results()[index];
+}
+
 int Profile::get_id(){
     return id;
 }

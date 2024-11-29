@@ -8,6 +8,8 @@
 #include <ctime>
 #include <QListWidget>
 #include <QDebug>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 
 enum pages {
     CREATE_PROFILE_PAGE_ID = 0,
@@ -41,12 +43,16 @@ class MainWindow : public QMainWindow
         void delete_profile();
         void submit_scan_button_clicked();
         void display_scan_results(QListWidgetItem *item);
+        void return_to_main_clicked();
     private:
         Ui::MainWindow *ui;
         Control* c;
         Profile* index_to_profile[MAX_PROFILES];
         void make_profile_dropdown();
+        void make_records_list();
         QVector<QDoubleSpinBox*> make_spinbox_vector();
         int current_index_dropdown;
+        QString statusToQString(status);
+        QGraphicsScene scene;
 };
 #endif // MAINWINDOW_H

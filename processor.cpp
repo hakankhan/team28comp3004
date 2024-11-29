@@ -86,11 +86,8 @@ status* Processor::get_sensor_data(status* sensor_data){
             sensor_data[i] = NEUTRAL;
             continue;
         }
+        sensor_data[i] = BAD;
 
-        if(value > BAD_SENSOR_VALUE){
-            sensor_data[i] = BAD;
-            continue;
-        }
     }
 
     return sensor_data;

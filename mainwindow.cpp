@@ -22,7 +22,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->new_scan_button, SIGNAL(clicked()), this, SLOT(scan_button_clicked()));
     connect(ui->submit_scan_button, SIGNAL(clicked()), this, SLOT(submit_scan_button_clicked()));
     connect(ui->scan_results_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(display_scan_results(QListWidgetItem*)));
+    connect(ui->return_button,SIGNAL(clicked()),this,SLOT(return_to_main_clicked()));
     srand(time(0));
+    QImage lungs(":/images/lungs.png");
+    QPixmap lungs_pix = QPixmap::fromImage(lungs);
+    QGraphicsPixmapItem *lungs_item = new QGraphicsPixmapItem(lungs_pix);
+    scene.addItem(lungs_item);
 }
 
 MainWindow::~MainWindow()
@@ -35,17 +40,27 @@ void MainWindow::make_profile_dropdown(){
     ui->switch_profile_box->clear();
     for(int i = 0; i < MAX_PROFILES; i++){
         Profile* p = c->get_profiles()[i];
-        num_list_elements++;
         if(p != NULL){
+            num_list_elements++;
             index_to_profile[num_list_elements] = p;
             ui->switch_profile_box->addItem("Profile " + QString::number(num_list_elements) + ": " + p->get_first_name());
             continue;
         }
 
-        index_to_profile[num_list_elements] = NULL;
+//        index_to_profile[num_list_elements] = NULL;
     }
-
     ui->switch_profile_box->setCurrentIndex(current_index_dropdown);
+}
+
+void MainWindow::make_records_list(){
+    ui->scan_results_list->clear();
+    Profile *p = c->get_current_profile();
+    if(p->get_history() == NULL){
+        return;
+    }
+    for(int i = 0; i < p->get_history()->get_num_past_results(); i++){
+        ui->scan_results_list->addItem("Record #" + QString::number(i));
+    }
 }
 
 void MainWindow::edit_profile_button_clicked(){
@@ -53,7 +68,7 @@ void MainWindow::edit_profile_button_clicked(){
 
     ui->main_stack->setCurrentIndex(EDIT_PROFILE_PAGE_ID);
 
-    Profile* p = c->get_current_profile();;
+    Profile* p = c->get_current_profile();
 
     ui->edit_first_name->setText(*p->get_first_name());
     ui->edit_last_name->setText(*p->get_last_name());
@@ -74,6 +89,7 @@ void MainWindow::edit_profile_submission(){
     ui->main_stack->setCurrentIndex(MAIN_PAGE_ID);
 
     make_profile_dropdown();
+    make_records_list();
 }
 
 void MainWindow::new_profile_button_clicked(){
@@ -98,6 +114,7 @@ void MainWindow::profile_changed(){
     qInfo("old profile id: %d", c->get_current_profile()->get_id());
     c->set_current_profile(index_to_profile[ui->switch_profile_box->currentIndex()]->get_id());
     qInfo("current profile id: %d", c->get_current_profile()->get_id());
+    make_records_list();
 }
 
 void MainWindow::submit_button_clicked()
@@ -116,18 +133,25 @@ void MainWindow::submit_button_clicked()
         current_index_dropdown = 0;
     }
     make_profile_dropdown();
+    make_records_list();
 }
 
 void MainWindow::delete_profile(){
     current_index_dropdown = 0;
     int id_to_delete = c->get_current_profile()->get_id();
+    int dropdown_index = ui->switch_profile_box->currentIndex();
     if(!c->more_than_one_profile()){
         ui->main_stack->setCurrentIndex(CREATE_PROFILE_PAGE_ID);
         c->delete_profile(id_to_delete);
         return;
     }
     c->delete_profile(id_to_delete);
+    for(int i = dropdown_index; i < MAX_PROFILES - 1; i++){
+            index_to_profile[i] = index_to_profile[i+1];
+        }
+    index_to_profile[MAX_PROFILES - 1] = NULL;
     make_profile_dropdown();
+    make_records_list();
 }
 
 void MainWindow::scan_button_clicked(){
@@ -183,14 +207,50 @@ void MainWindow::submit_scan_button_clicked(){
     c->get_current_profile()->add_result(result);
     qInfo("test 3");
     qInfo("made scan %d", c->get_current_profile()->get_history()->get_num_past_results());
-    ui->scan_results_list->addItem("Record #" + QString::number(c->get_current_profile()->get_history()->get_num_past_results()));
+    make_records_list();
 }
 
 void MainWindow::display_scan_results(QListWidgetItem *item){
     //TODO: push results to display in tabs
-    int itemID = item->text().split("#")[1].toInt() - 1;
+    int itemID = item->text().split("#")[1].toInt();
+    QTableWidget* tb = ui->results_table;
+    QGraphicsView* disp = ui->diagram_graphics;
+    QGraphicsScene scene;
     qInfo() << "opening record" << itemID;
     ui->main_stack->setCurrentIndex(RESULTS_PAGE_ID);
+    ScanResult* r = c->get_current_profile()->get_result(itemID);
+    tb->setItem(0,0,new QTableWidgetItem(statusToQString(r->get_lungs_status())));
+    tb->setItem(1,0,new QTableWidgetItem(statusToQString(r->get_heart_status())));
+    tb->setItem(2,0,new QTableWidgetItem(statusToQString(r->get_pericardium_status())));
+    tb->setItem(3,0,new QTableWidgetItem(statusToQString(r->get_liver_status())));
+    tb->setItem(4,0,new QTableWidgetItem(statusToQString(r->get_gall_bladder_status())));
+    tb->setItem(5,0,new QTableWidgetItem(statusToQString(r->get_stomach_status())));
+    tb->setItem(6,0,new QTableWidgetItem(statusToQString(r->get_spleen_status())));
+    tb->setItem(7,0,new QTableWidgetItem(statusToQString(r->get_pancreas_status())));
+    tb->setItem(8,0,new QTableWidgetItem(statusToQString(r->get_kidney_status())));
+    tb->setItem(9,0,new QTableWidgetItem(statusToQString(r->get_adrenal_glands_status())));
+    tb->setItem(10,0,new QTableWidgetItem(statusToQString(r->get_small_intestine_status())));
+    tb->setItem(11,0,new QTableWidgetItem(statusToQString(r->get_large_intestine_status())));
+    tb->setItem(12,0,new QTableWidgetItem(statusToQString(r->get_bladder_status())));
+    tb->setItem(13,0,new QTableWidgetItem(statusToQString(r->get_lymph_status())));
+
 
 //    ui->results_table
+}
+
+void MainWindow::return_to_main_clicked(){
+    ui->main_stack->setCurrentIndex(MAIN_PAGE_ID);
+}
+
+QString MainWindow::statusToQString(status s){
+    switch(s){
+        case NEUTRAL:
+            return QString("Average");
+        case BAD:
+            return QString("Poor");
+        case GOOD:
+            return QString("Excellent");
+        default:
+            return QString("");
+    }
 }

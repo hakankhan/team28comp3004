@@ -45,6 +45,10 @@ void Control::delete_profile(int id){
     for(int i = 0; i < MAX_PROFILES; i++){
         if(profiles[i]->get_id() == id){
             profiles[i] = NULL;
+            for(int j = i; j < MAX_PROFILES - 1; j++){
+                profiles[j] = profiles[j + 1];
+            }
+            profiles[MAX_PROFILES - 1] = NULL;
             if(current_profile->get_id() == id){
                 for(int j = 0; j < MAX_PROFILES; j++){
                     if(profiles[j] != NULL){

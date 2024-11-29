@@ -4,8 +4,7 @@
 #include "sensor.h"
 
 #define GOOD_SENSOR_VALUE 10
-#define NEUTRAL_SENSOR_VALUE 5
-#define BAD_SENSOR_VALUE 3
+#define NEUTRAL_SENSOR_VALUE 4
 
 //indexes for sensors
 #define LH1 0
@@ -18,7 +17,7 @@
 #define RH4 9
 #define LH5 4
 #define RH5 10
-#define LH6 6
+#define LH6 5
 #define RH6 11
 #define LF1 12
 #define RF1 18

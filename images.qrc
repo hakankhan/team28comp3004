@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/adrenal_glands.PNG</file>
+        <file>images/bladder.PNG</file>
+        <file>images/body.PNG</file>
+        <file>images/gall_bladder.PNG</file>
+        <file>images/heart.PNG</file>
+        <file>images/kidneys.PNG</file>
+        <file>images/large_intestine.PNG</file>
+        <file>images/liver.PNG</file>
+        <file>images/lungs.PNG</file>
+        <file>images/lymph.PNG</file>
+        <file>images/pancreas.PNG</file>
+        <file>images/pericardum.PNG</file>
+        <file>images/small_intestine.PNG</file>
+        <file>images/spleen.PNG</file>
+        <file>images/stomach.PNG</file>
+    </qresource>
+</RCC>

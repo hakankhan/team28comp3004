@@ -23,6 +23,7 @@ class Profile
         int get_id();
         void set_history(Records*);
         void add_result(ScanResult*);
+        ScanResult* get_result(int index);
         ~Profile();
 
     private:

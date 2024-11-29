@@ -10,18 +10,6 @@
     <height>600</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>800</width>
-    <height>600</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>800</width>
-    <height>600</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -545,13 +533,16 @@
          <rect>
           <x>10</x>
           <y>10</y>
-          <width>211</width>
+          <width>321</width>
           <height>451</height>
          </rect>
         </property>
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
         </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>200</number>
+        </attribute>
         <row>
          <property name="text">
           <string>Lungs</string>
@@ -559,7 +550,7 @@
         </row>
         <row>
          <property name="text">
-          <string>New Row</string>
+          <string>Heart</string>
          </property>
         </row>
         <row>
@@ -604,12 +595,12 @@
         </row>
         <row>
          <property name="text">
-          <string>Large Intestine</string>
+          <string>Small Intestine</string>
          </property>
         </row>
         <row>
          <property name="text">
-          <string>New Row</string>
+          <string>Large Intestine</string>
          </property>
         </row>
         <row>
