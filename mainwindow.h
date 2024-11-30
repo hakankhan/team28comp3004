@@ -54,5 +54,9 @@ class MainWindow : public QMainWindow
         int current_index_dropdown;
         QString statusToQString(status);
         QGraphicsScene scene;
+        QHash<QString,QPixmap> good_images_hash;
+        QHash<QString,QPixmap> neutral_images_hash;
+        QHash<QString,QPixmap> bad_images_hash;
+        void make_image_hash();
 };
 #endif // MAINWINDOW_H

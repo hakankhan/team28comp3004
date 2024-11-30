@@ -1,19 +1,19 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/adrenal_glands.PNG</file>
-        <file>images/bladder.PNG</file>
-        <file>images/body.PNG</file>
-        <file>images/gall_bladder.PNG</file>
-        <file>images/heart.PNG</file>
-        <file>images/kidneys.PNG</file>
-        <file>images/large_intestine.PNG</file>
-        <file>images/liver.PNG</file>
-        <file>images/lungs.PNG</file>
-        <file>images/lymph.PNG</file>
-        <file>images/pancreas.PNG</file>
-        <file>images/pericardum.PNG</file>
-        <file>images/small_intestine.PNG</file>
-        <file>images/spleen.PNG</file>
-        <file>images/stomach.PNG</file>
+        <file>images/good_diagram_status/adrenal_glands.PNG</file>
+        <file>images/good_diagram_status/bladder.PNG</file>
+        <file>images/good_diagram_status/body.PNG</file>
+        <file>images/good_diagram_status/gall_bladder.PNG</file>
+        <file>images/good_diagram_status/heart.PNG</file>
+        <file>images/good_diagram_status/kidneys.PNG</file>
+        <file>images/good_diagram_status/large_intestine.PNG</file>
+        <file>images/good_diagram_status/liver.PNG</file>
+        <file>images/good_diagram_status/lungs.PNG</file>
+        <file>images/good_diagram_status/lymph.PNG</file>
+        <file>images/good_diagram_status/pancreas.PNG</file>
+        <file>images/good_diagram_status/pericardium.PNG</file>
+        <file>images/good_diagram_status/small_intestine.PNG</file>
+        <file>images/good_diagram_status/spleen.PNG</file>
+        <file>images/good_diagram_status/stomach.PNG</file>
     </qresource>
 </RCC>

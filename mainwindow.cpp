@@ -24,10 +24,32 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->scan_results_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(display_scan_results(QListWidgetItem*)));
     connect(ui->return_button,SIGNAL(clicked()),this,SLOT(return_to_main_clicked()));
     srand(time(0));
-    QImage lungs(":/images/lungs.png");
-    QPixmap lungs_pix = QPixmap::fromImage(lungs);
-    QGraphicsPixmapItem *lungs_item = new QGraphicsPixmapItem(lungs_pix);
-    scene.addItem(lungs_item);
+    good_images_hash.insert("lungs",QPixmap(":/images/good_diagram_status/lungs.PNG"));
+    good_images_hash.insert("adrenal_glands",QPixmap(":/images/good_diagram_status/adrenal_glands.PNG"));
+    good_images_hash.insert("bladder",QPixmap(":/images/good_diagram_status/bladder.PNG"));
+    good_images_hash.insert("body",QPixmap(":/images/good_diagram_status/body.PNG"));
+    good_images_hash.insert("gall_bladder",QPixmap(":/images/good_diagram_status/gall_bladder.PNG"));
+    good_images_hash.insert("heart",QPixmap(":/images/good_diagram_status/heart.PNG"));
+    good_images_hash.insert("kidneys",QPixmap(":/images/good_diagram_status/kidneys.PNG"));
+    good_images_hash.insert("large_intestine",QPixmap(":/images/good_diagram_status/large_intestine.PNG"));
+    good_images_hash.insert("liver",QPixmap(":/images/good_diagram_status/liver.PNG"));
+    good_images_hash.insert("lymph",QPixmap(":/images/good_diagram_status/lymph.PNG"));
+    good_images_hash.insert("pancreas",QPixmap(":/images/good_diagram_status/pancreas.PNG"));
+    good_images_hash.insert("pericardum",QPixmap(":/images/good_diagram_status/pericardum.PNG"));
+    good_images_hash.insert("small_intestine",QPixmap(":/images/good_diagram_status/small_intestine.PNG"));
+    good_images_hash.insert("spleen",QPixmap(":/images/good_diagram_status/spleen.PNG"));
+    good_images_hash.insert("stomach",QPixmap(":/images/good_diagram_status/stomach.PNG"));
+
+    scene.addPixmap(good_images_hash.value("lungs"));
+    scene.addPixmap(good_images_hash.value("adrenal_glands"));
+}
+void MainWindow::make_image_hash(){
+    QStringList organs = {"adrenal_glands","bladder","body","gall_bladder","heart","kidneys",\
+                          "large_intestine","liver","lungs","lymph","pancreas","pericardium",\
+                          "small_intestine","spleen","stomach"};
+    for(int i = 0; i < organs.size(); i++){
+        good_images_hash.insert(organs[i],QPixmap(":/images/good_diagram_status/" + organs[i] + ".PNG"));
+    }
 }
 
 MainWindow::~MainWindow()
@@ -51,6 +73,8 @@ void MainWindow::make_profile_dropdown(){
     }
     ui->switch_profile_box->setCurrentIndex(current_index_dropdown);
 }
+
+
 
 void MainWindow::make_records_list(){
     ui->scan_results_list->clear();
@@ -215,7 +239,6 @@ void MainWindow::display_scan_results(QListWidgetItem *item){
     int itemID = item->text().split("#")[1].toInt();
     QTableWidget* tb = ui->results_table;
     QGraphicsView* disp = ui->diagram_graphics;
-    QGraphicsScene scene;
     qInfo() << "opening record" << itemID;
     ui->main_stack->setCurrentIndex(RESULTS_PAGE_ID);
     ScanResult* r = c->get_current_profile()->get_result(itemID);
@@ -233,8 +256,8 @@ void MainWindow::display_scan_results(QListWidgetItem *item){
     tb->setItem(11,0,new QTableWidgetItem(statusToQString(r->get_large_intestine_status())));
     tb->setItem(12,0,new QTableWidgetItem(statusToQString(r->get_bladder_status())));
     tb->setItem(13,0,new QTableWidgetItem(statusToQString(r->get_lymph_status())));
-
-
+    disp->setScene(&scene);
+    disp->show();
 //    ui->results_table
 }
 
