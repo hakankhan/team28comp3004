@@ -3,7 +3,7 @@
 #include "scanresult.h"
 #include "sensor.h"
 
-#define GOOD_SENSOR_VALUE 10
+#define GOOD_SENSOR_VALUE 8
 #define NEUTRAL_SENSOR_VALUE 4
 
 //indexes for sensors

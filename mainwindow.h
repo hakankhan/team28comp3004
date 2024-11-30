@@ -52,7 +52,7 @@ class MainWindow : public QMainWindow
         void make_records_list();
         QVector<QDoubleSpinBox*> make_spinbox_vector();
         int current_index_dropdown;
-        QString statusToQString(status);
+        QString statusToDisplay(status s, QString organ);
         QGraphicsScene scene;
         QHash<QString,QPixmap> good_images_hash;
         QHash<QString,QPixmap> neutral_images_hash;
