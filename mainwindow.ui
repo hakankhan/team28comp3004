@@ -18,13 +18,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>30</y>
       <width>801</width>
-      <height>581</height>
+      <height>551</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="profile">
      <widget class="QFrame" name="frame">
@@ -325,8 +325,25 @@
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="battery_warning_label">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>80</y>
+        <width>251</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Charge the battery before continuing</string>
+      </property>
+     </widget>
      <zorder>frame_3</zorder>
      <zorder>frame_2</zorder>
+     <zorder>battery_warning_label</zorder>
     </widget>
     <widget class="QWidget" name="edit_profile_page">
      <widget class="QFrame" name="frame_4">
@@ -644,8 +661,8 @@
      <widget class="QPushButton" name="submit_scan_button">
       <property name="geometry">
        <rect>
-        <x>710</x>
-        <y>520</y>
+        <x>360</x>
+        <y>490</y>
         <width>83</width>
         <height>25</height>
        </rect>
@@ -657,8 +674,8 @@
      <widget class="QDoubleSpinBox" name="LH1_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>130</y>
+        <x>150</x>
+        <y>50</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -673,8 +690,8 @@
      <widget class="QDoubleSpinBox" name="LH2_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>160</y>
+        <x>150</x>
+        <y>130</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -689,8 +706,8 @@
      <widget class="QDoubleSpinBox" name="LH4_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>220</y>
+        <x>150</x>
+        <y>290</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -705,8 +722,8 @@
      <widget class="QDoubleSpinBox" name="LH3_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>190</y>
+        <x>150</x>
+        <y>210</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -721,8 +738,8 @@
      <widget class="QDoubleSpinBox" name="LH5_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>250</y>
+        <x>150</x>
+        <y>370</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -737,8 +754,8 @@
      <widget class="QDoubleSpinBox" name="LH6_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>280</y>
+        <x>150</x>
+        <y>450</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -753,8 +770,8 @@
      <widget class="QDoubleSpinBox" name="LF2_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>340</y>
+        <x>510</x>
+        <y>130</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -769,8 +786,8 @@
      <widget class="QDoubleSpinBox" name="LF1_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>310</y>
+        <x>510</x>
+        <y>50</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -785,8 +802,8 @@
      <widget class="QDoubleSpinBox" name="RH1_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>130</y>
+        <x>230</x>
+        <y>50</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -801,8 +818,8 @@
      <widget class="QDoubleSpinBox" name="LF3_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>370</y>
+        <x>510</x>
+        <y>210</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -817,8 +834,8 @@
      <widget class="QDoubleSpinBox" name="RH2_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>160</y>
+        <x>230</x>
+        <y>130</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -833,8 +850,8 @@
      <widget class="QDoubleSpinBox" name="RH3_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>190</y>
+        <x>230</x>
+        <y>210</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -849,8 +866,8 @@
      <widget class="QDoubleSpinBox" name="RH5_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>250</y>
+        <x>230</x>
+        <y>370</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -865,8 +882,8 @@
      <widget class="QDoubleSpinBox" name="RH4_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>220</y>
+        <x>230</x>
+        <y>290</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -881,8 +898,8 @@
      <widget class="QDoubleSpinBox" name="RF1_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>310</y>
+        <x>590</x>
+        <y>50</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -897,8 +914,8 @@
      <widget class="QDoubleSpinBox" name="RH6_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>280</y>
+        <x>230</x>
+        <y>450</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -913,8 +930,8 @@
      <widget class="QDoubleSpinBox" name="RF3_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>370</y>
+        <x>590</x>
+        <y>210</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -929,8 +946,8 @@
      <widget class="QDoubleSpinBox" name="RF2_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>340</y>
+        <x>590</x>
+        <y>130</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -945,9 +962,9 @@
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>100</y>
-        <width>62</width>
+        <x>170</x>
+        <y>30</y>
+        <width>41</width>
         <height>17</height>
        </rect>
       </property>
@@ -958,9 +975,9 @@
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>100</y>
-        <width>62</width>
+        <x>240</x>
+        <y>30</y>
+        <width>41</width>
         <height>17</height>
        </rect>
       </property>
@@ -972,124 +989,59 @@
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>130</y>
+        <y>10</y>
         <width>62</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Hand 1</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_18">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>160</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Hand 2</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_19">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>190</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Hand 3</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_20">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>220</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Hand 4</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_21">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>250</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Hand 5</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_22">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>280</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Hand 6</string>
+       <string>Hands</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_23">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>310</y>
+        <x>570</x>
+        <y>10</y>
         <width>62</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Foot 1</string>
+       <string>Feet</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_24">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>340</y>
-        <width>62</width>
+        <x>530</x>
+        <y>30</y>
+        <width>41</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Foot 2</string>
+       <string>Left</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_25">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>370</y>
-        <width>62</width>
+        <x>600</x>
+        <y>30</y>
+        <width>41</width>
         <height>17</height>
        </rect>
       </property>
       <property name="text">
-       <string>Foot 3</string>
+       <string>Right</string>
       </property>
      </widget>
      <widget class="QDoubleSpinBox" name="RF5_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>430</y>
+        <x>590</x>
+        <y>370</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -1104,8 +1056,8 @@
      <widget class="QDoubleSpinBox" name="LF4_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>400</y>
+        <x>510</x>
+        <y>290</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -1120,8 +1072,8 @@
      <widget class="QDoubleSpinBox" name="LF6_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>460</y>
+        <x>510</x>
+        <y>450</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -1133,24 +1085,11 @@
        <double>12.000000000000000</double>
       </property>
      </widget>
-     <widget class="QLabel" name="label_26">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>430</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Foot 5</string>
-      </property>
-     </widget>
      <widget class="QDoubleSpinBox" name="LF5_box">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>430</y>
+        <x>510</x>
+        <y>370</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -1165,8 +1104,8 @@
      <widget class="QDoubleSpinBox" name="RF4_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>400</y>
+        <x>590</x>
+        <y>290</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -1178,37 +1117,11 @@
        <double>12.000000000000000</double>
       </property>
      </widget>
-     <widget class="QLabel" name="label_27">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>460</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Foot 6</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_28">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>400</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Foot 4</string>
-      </property>
-     </widget>
      <widget class="QDoubleSpinBox" name="RF6_box">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>460</y>
+        <x>590</x>
+        <y>450</y>
         <width>65</width>
         <height>26</height>
        </rect>
@@ -1221,6 +1134,60 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="battery_page">
+     <widget class="QSpinBox" name="battery_box">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>130</y>
+        <width>45</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="battery_save_button">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>160</y>
+        <width>251</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Set Battery Percentage and Return</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QProgressBar" name="battery_level">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>0</y>
+      <width>118</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="battery_charge_button">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>0</y>
+      <width>111</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Charge Battery</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -14,5 +14,9 @@ int Battery::get_percentage(){
     return percentage;
 }
 
+bool Battery::has_enough_charge(){
+    return percentage >= CHARGE_PER_SCAN;
+}
+
 //placeholder for now
 Battery::~Battery(){}

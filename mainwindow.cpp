@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
         index_to_profile[i] = NULL;
     }
     current_index_dropdown = -1;
+    previous_page_index = -1;
+    ui->battery_warning_label->setVisible(false);
     connect(ui->submit_button, SIGNAL(clicked()), this, SLOT(submit_button_clicked()));
     connect(ui->switch_profile_box, SIGNAL(activated(int)), this, SLOT(profile_changed()));
     connect(ui->new_profile_button, SIGNAL(clicked()), this, SLOT(new_profile_button_clicked()));
@@ -23,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->submit_scan_button, SIGNAL(clicked()), this, SLOT(submit_scan_button_clicked()));
     connect(ui->scan_results_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(display_scan_results(QListWidgetItem*)));
     connect(ui->return_button,SIGNAL(clicked()),this,SLOT(return_to_main_clicked()));
+    connect(ui->battery_charge_button,SIGNAL(clicked()),this,SLOT(charge_battery_button_clicked()));
+    connect(ui->battery_save_button,SIGNAL(clicked()),this,SLOT(set_battery_charge_and_return()));
     srand(time(0));
     make_image_hash();
 }
@@ -40,6 +44,20 @@ void MainWindow::make_image_hash(){
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::charge_battery_button_clicked(){
+    previous_page_index = ui->main_stack->currentIndex();
+    ui->main_stack->setCurrentIndex(BATTERY_PAGE);
+    ui->battery_charge_button->setVisible(false);
+    ui->battery_box->setValue(c->get_battery()->get_percentage());
+}
+
+void MainWindow::set_battery_charge_and_return(){
+    ui->main_stack->setCurrentIndex(previous_page_index);
+    c->get_battery()->set_percentage(ui->battery_box->value());
+    ui->battery_level->setValue(c->get_battery()->get_percentage());
+    ui->battery_charge_button->setVisible(true);
 }
 
 void MainWindow::make_profile_dropdown(){
@@ -164,6 +182,12 @@ void MainWindow::delete_profile(){
 }
 
 void MainWindow::scan_button_clicked(){
+    if(!c->get_battery()->has_enough_charge()){
+        ui->battery_warning_label->setVisible(true);
+        return;
+    }
+    c->deplete_battery();
+    ui->battery_level->setValue(c->get_battery()->get_percentage());
     QVector<QDoubleSpinBox*> spinboxes = make_spinbox_vector();
     Sensor* s = c->get_processor()->get_sensor();
     for(int i = 0; i < 24; i++){

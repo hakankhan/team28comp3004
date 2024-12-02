@@ -16,7 +16,8 @@ enum pages {
     MAIN_PAGE_ID = 1,
     EDIT_PROFILE_PAGE_ID = 2,
     RESULTS_PAGE_ID = 3,
-    SCAN_PAGE_ID = 4
+    SCAN_PAGE_ID = 4,
+    BATTERY_PAGE = 5
 };
 
 using namespace std;
@@ -44,6 +45,8 @@ class MainWindow : public QMainWindow
         void submit_scan_button_clicked();
         void display_scan_results(QListWidgetItem *item);
         void return_to_main_clicked();
+        void charge_battery_button_clicked();
+        void set_battery_charge_and_return();
     private:
         Ui::MainWindow *ui;
         Control* c;
@@ -58,5 +61,6 @@ class MainWindow : public QMainWindow
         QHash<QString,QPixmap> neutral_images_hash;
         QHash<QString,QPixmap> bad_images_hash;
         void make_image_hash();
+        int previous_page_index;
 };
 #endif // MAINWINDOW_H

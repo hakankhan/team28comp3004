@@ -91,8 +91,7 @@ Profile** Control::get_profiles(){
  *
  */
 void Control::deplete_battery(){
-    battery->set_percentage(battery->get_percentage() - 5);
-    //todo, how much to decrement battery by? also maybe rename function
+    battery->set_percentage(battery->get_percentage() - CHARGE_PER_SCAN);
 }
 
 
