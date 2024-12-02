@@ -5,6 +5,12 @@
 using namespace std;
 class ScanResult;
 
+/**
+ * @brief The Records class
+ *
+ * The Records class is a collection of ScanResult objects (see 'scanresult.h')
+ * which is held by a Profile object (see 'profile.h').
+ */
 class Records
 {
     public:

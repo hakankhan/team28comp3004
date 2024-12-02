@@ -36,6 +36,14 @@
 class ScanResult;
 class Sensor;
 
+
+/**
+ * @brief The Processor class
+ *
+ * The Processor class is one of the central classes responsible
+ * for performing a scan when prompted to do so by the user. The
+ * Processor class holds the Sensor object (see 'sensor.h').
+ */
 class Processor
 {
     public:

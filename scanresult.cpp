@@ -3,8 +3,7 @@
 /**
  * @brief ScanResult::ScanResult
  *
- * Init all organs to NEUTRAL status
- *
+ * Init all organs to NEUTRAL status.
  */
 ScanResult::ScanResult()
 {
@@ -23,6 +22,10 @@ ScanResult::ScanResult()
     pancreas = NEUTRAL;
     adrenal_glands = NEUTRAL;
 }
+
+/*
+ * All functions in this class are getters/setters for various fields.
+ */
 
 status ScanResult::get_stomach_status(){
     return stomach;
@@ -140,8 +143,6 @@ QDateTime ScanResult::get_time_of_scan(){
 void ScanResult::set_time_of_scan(QDateTime t){
     time_of_scan = t;
 }
-
-
 
 //placeholder
 ScanResult::~ScanResult(){}

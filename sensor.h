@@ -4,9 +4,12 @@
 /**
  * @brief The Sensor class
  *
- * Add better documentation later, but for now:
- * Sensor : Array of 24 doubles (0-5 LH, 6-11 RH, 12-17 LF, 18-23 RF)
+ * The Sensor class is a class which simulates RaDoTech sensors. These
+ * are implented as an array of 24 doubles (which simulate the voltage
+ * each sensor recieves).
+ * The array is stored as such: (0-5 LH, 6-11 RH, 12-17 LF, 18-23 RF).
  *
+ * See 'processor.h' for specific indecies.
  */
 class Sensor
 {

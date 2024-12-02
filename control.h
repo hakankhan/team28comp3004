@@ -10,6 +10,14 @@ class Processor;
 class Battery;
 class Profile;
 
+/**
+ * @brief The Control class
+ *
+ * The Control class is responsible for maintaining the state of
+ * the device, and interfaces with all other classes to perform device
+ * functions. The Control class holds the Processor, Battery and Profile
+ * classes (see 'processor.h', 'battery.h', and 'profile.h' respectively).
+ */
 class Control
 {
     public:

@@ -4,6 +4,14 @@
 
 enum status {GOOD = 1, NEUTRAL = 0, BAD = -1};
 
+/**
+ * @brief The ScanResult class
+ *
+ * The ScanResult class is a container class with all of the statuses
+ * of each organ from a scan stored within. The status enum is used
+ * to denote the health of each organ, with values of GOOD (1),
+ * NEUTRAL (0) and BAD (-1).
+ */
 class ScanResult
 {
     public:

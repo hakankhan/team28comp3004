@@ -3,8 +3,7 @@
 /**
  * @brief Sensor::Sensor
  *
- * Init sensor values to -1 value
- *
+ * Init sensor values to -1 (NULL) value.
  */
 Sensor::Sensor()
 {
@@ -13,10 +12,26 @@ Sensor::Sensor()
     }
 }
 
+/**
+ * @brief Sensor::set_value_at_index
+ *
+ * set_value_at_index sets the value at index i to value v.
+ *
+ * @param i - The index
+ * @param v - The value
+ */
 void Sensor::set_value_at_index(int i, double v){
     sensors[i] = v;
 }
 
+/**
+ * @brief Sensor::get_value_at_index
+ *
+ * get_value_at_index returns the value at index i.
+ *
+ * @param i - The index
+ * @return - The value
+ */
 double Sensor::get_value_at_index(int i){
     return sensors[i];
 }

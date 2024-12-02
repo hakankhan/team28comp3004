@@ -1,6 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+/**
+ * @brief MainWindow::MainWindow
+ *
+ * The constructor, runs on application start. This function
+ * initalizes all critical variables, and connects all slots.
+ *
+ * @param parent - The parent object of this QMainWindow
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -30,6 +38,13 @@ MainWindow::MainWindow(QWidget *parent)
     srand(time(0));
     make_image_hash();
 }
+
+/**
+ * @brief MainWindow::make_image_hash
+ *
+ * make_image_hash initalizes the hashmaps good_imgaes_hash, neutral_images_hash,,
+ * and bad_images_hash. These are used to populate the scan results screen.
+ */
 void MainWindow::make_image_hash(){
     QStringList organs = {"adrenal_glands","bladder","gall_bladder","heart","kidneys",\
                           "large_intestine","liver","lungs","lymph","pancreas","pericardium",\
@@ -41,11 +56,14 @@ void MainWindow::make_image_hash(){
     }
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
+/**
+ * @brief MainWindow::charge_battery_button_clicked
+ *
+ * This slot is connected to the charge button in the top right of all
+ * screens. This slot updates the battery_box to reflect the current charge,
+ * as well as saving the old screen's index while transitioning to the charge
+ * battery screen.
+ */
 void MainWindow::charge_battery_button_clicked(){
     previous_page_index = ui->main_stack->currentIndex();
     ui->main_stack->setCurrentIndex(BATTERY_PAGE);
@@ -53,6 +71,13 @@ void MainWindow::charge_battery_button_clicked(){
     ui->battery_box->setValue(c->get_battery()->get_percentage());
 }
 
+/**
+ * @brief MainWindow::set_battery_charge_and_return
+ *
+ * This slot is connected to the charge button in the charge battery
+ * screen. This slot sets the battery to the inputted charge in
+ * battery_charge_box.
+ */
 void MainWindow::set_battery_charge_and_return(){
     ui->main_stack->setCurrentIndex(previous_page_index);
     c->get_battery()->set_percentage(ui->battery_box->value());
@@ -65,6 +90,16 @@ void MainWindow::set_battery_charge_and_return(){
     }
 }
 
+/**
+ * @brief MainWindow::make_profile_dropdown
+ *
+ * make_profile_dropdown is a function which populates the
+ * switch_profile_box dropdown menu. The function uses the
+ * index_to_profile array to ensure that all elements are in-order
+ * and generates the text, while updating the index_to_elements
+ * array so that it can be used in the future to get the pointer to
+ * a profile from a selected dropdown index.
+ */
 void MainWindow::make_profile_dropdown(){
     int num_list_elements = -1;
     ui->switch_profile_box->clear();
@@ -76,14 +111,19 @@ void MainWindow::make_profile_dropdown(){
             ui->switch_profile_box->addItem("Profile " + QString::number(num_list_elements) + ": " + p->get_first_name());
             continue;
         }
-
-//        index_to_profile[num_list_elements] = NULL;
     }
     ui->switch_profile_box->setCurrentIndex(current_index_dropdown);
 }
 
-
-
+/**
+ * @brief MainWindow::make_records_list
+ *
+ * make_records_list is a function which populates the scan_results_list
+ * ui element. This function generates the text in such a way that it can
+ * be used in conjunction with the current profile to get the ScanResult
+ * object (see 'scanresult.h') corresponding to the list when clicked by
+ * the user.
+ */
 void MainWindow::make_records_list(){
     ui->scan_results_list->clear();
     Profile *p = c->get_current_profile();
@@ -95,6 +135,13 @@ void MainWindow::make_records_list(){
     }
 }
 
+/**
+ * @brief MainWindow::edit_profile_button_clicked
+ *
+ * This slot is connected to the edit_profile_button on the main screen.
+ * This slot switches the screen to the edit profile screen, and also populates
+ * the fields with the current profile's.
+ */
 void MainWindow::edit_profile_button_clicked(){
     current_index_dropdown = ui->switch_profile_box->currentIndex();
 
@@ -109,6 +156,13 @@ void MainWindow::edit_profile_button_clicked(){
     ui->edit_birthday->setDate(*p->get_birthday());
 }
 
+/**
+ * @brief MainWindow::edit_profile_submission
+ *
+ * This slot is connected to the edit_submit_button on the edit profile screen.
+ * This slot performs all modifications to the current profile based on user
+ * input on the edit profile screen.
+ */
 void MainWindow::edit_profile_submission(){
     Profile* p = c->get_current_profile();
 
@@ -124,6 +178,13 @@ void MainWindow::edit_profile_submission(){
     make_records_list();
 }
 
+/**
+ * @brief MainWindow::new_profile_button_clicked
+ *
+ * This slot is connected to the new_profile_button on the main screen.
+ * This slot switches the screen to the create profile screen, and clears
+ * all of the fields in said screen.
+ */
 void MainWindow::new_profile_button_clicked(){
     Profile** arr = c->get_profiles();
     for(int i = 0; i < MAX_PROFILES; i++){
@@ -141,14 +202,13 @@ void MainWindow::new_profile_button_clicked(){
     ui->birthday->clear();
 }
 
-void MainWindow::profile_changed(){
-    qInfo("changed");
-    qInfo("old profile id: %d", c->get_current_profile()->get_id());
-    c->set_current_profile(index_to_profile[ui->switch_profile_box->currentIndex()]->get_id());
-    qInfo("current profile id: %d", c->get_current_profile()->get_id());
-    make_records_list();
-}
-
+/**
+ * @brief MainWindow::submit_button_clicked
+ *
+ * This slot is connected to the submit_button in the new profile screen.
+ * This slot instructs the Control object (see 'control.h') to create a profile
+ * based on user input on said screen.
+ */
 void MainWindow::submit_button_clicked()
 {
     // push profile to control
@@ -168,6 +228,24 @@ void MainWindow::submit_button_clicked()
     make_records_list();
 }
 
+/**
+ * @brief MainWindow::profile_changed
+ *
+ * This slot is connected to a change in the selected element in the
+ * switch_profile_box on the main screen. This slot modifies the current
+ * profile to be the selected profile.
+ */
+void MainWindow::profile_changed(){
+    c->set_current_profile(index_to_profile[ui->switch_profile_box->currentIndex()]->get_id());
+    make_records_list();
+}
+
+/**
+ * @brief MainWindow::delete_profile
+ *
+ * This slot is connected to the delete_profile_button on the main screen.
+ * This slot deletes the current profile and updates all necessary elements.
+ */
 void MainWindow::delete_profile(){
     current_index_dropdown = 0;
     int id_to_delete = c->get_current_profile()->get_id();
@@ -186,6 +264,13 @@ void MainWindow::delete_profile(){
     make_records_list();
 }
 
+/**
+ * @brief MainWindow::scan_button_clicked
+ *
+ * This slot is connected to the new_scan_button on the main screen. This
+ * slot populates the sensor data with random values, and prompts the user
+ * to change the values for the simulated data.
+ */
 void MainWindow::scan_button_clicked(){
     if(!c->get_battery()->has_enough_charge()){
         ui->battery_warning_label->setVisible(true);
@@ -202,6 +287,15 @@ void MainWindow::scan_button_clicked(){
     ui->main_stack->setCurrentIndex(SCAN_PAGE_ID);
 }
 
+/**
+ * @brief MainWindow::make_spinbox_vector
+ *
+ * make_spinbox_vector is a helper function used to create a vector
+ * of spinbox objects in the sensor screen. This is used to populate
+ * sensor data efficiently once the scan is submitted.
+ *
+ * @return - The vector
+ */
 QVector<QDoubleSpinBox*> MainWindow::make_spinbox_vector(){
     QVector<QDoubleSpinBox*> spinboxes;
     spinboxes.push_back(ui->LH1_box);
@@ -231,6 +325,13 @@ QVector<QDoubleSpinBox*> MainWindow::make_spinbox_vector(){
     return spinboxes;
 }
 
+/**
+ * @brief MainWindow::submit_scan_button_clicked
+ *
+ * This slot is connected to the submit_scan_button in the sensor screen.
+ * This slot sets the sensor values, and performs the scan. This slot then
+ * adds the scan to the current profile's history.
+ */
 void MainWindow::submit_scan_button_clicked(){
     QVector<QDoubleSpinBox*> spinboxes = make_spinbox_vector();
     Sensor* s = c->get_processor()->get_sensor();
@@ -239,15 +340,22 @@ void MainWindow::submit_scan_button_clicked(){
     }
 
     ui->main_stack->setCurrentIndex(MAIN_PAGE_ID);
-    qInfo("test 1");
     ScanResult* result = c->get_processor()->perform_scan();
-    qInfo("test 2");
     c->get_current_profile()->add_result(result);
-    qInfo("test 3");
     qInfo("made scan %d", c->get_current_profile()->get_history()->get_num_past_results());
     make_records_list();
 }
 
+/**
+ * @brief MainWindow::display_scan_results
+ *
+ * This slot is connected to the scan_results_list on the main screen.
+ * This slot uses the result's name to get the ScanResult object (see 'scanresult.h')
+ * from the current profile's Records object (see 'records.h'). Using this result,
+ * the slot populates the results screen.
+ *
+ * @param item
+ */
 void MainWindow::display_scan_results(QListWidgetItem *item){
     int itemID = item->text().split("#")[1].toInt();
     QTableWidget* tb = ui->results_table;
@@ -266,29 +374,45 @@ void MainWindow::display_scan_results(QListWidgetItem *item){
     qInfo() << "opening record" << itemID;
     ui->main_stack->setCurrentIndex(RESULTS_PAGE_ID);
     ScanResult* r = c->get_current_profile()->get_result(itemID);
-    tb->setItem(0,0,new QTableWidgetItem(statusToDisplay(r->get_lungs_status(),"lungs")));
-    tb->setItem(5,0,new QTableWidgetItem(statusToDisplay(r->get_stomach_status(),"stomach")));
-    tb->setItem(2,0,new QTableWidgetItem(statusToDisplay(r->get_pericardium_status(), "pericardium")));
-    tb->setItem(1,0,new QTableWidgetItem(statusToDisplay(r->get_heart_status(), "heart")));
-    tb->setItem(10,0,new QTableWidgetItem(statusToDisplay(r->get_small_intestine_status(),"small_intestine")));
-    tb->setItem(11,0,new QTableWidgetItem(statusToDisplay(r->get_large_intestine_status(),"large_intestine")));
-    tb->setItem(12,0,new QTableWidgetItem(statusToDisplay(r->get_bladder_status(),"bladder")));
-    tb->setItem(6,0,new QTableWidgetItem(statusToDisplay(r->get_spleen_status(),"spleen")));
-    tb->setItem(3,0,new QTableWidgetItem(statusToDisplay(r->get_liver_status(),"liver")));
-    tb->setItem(8,0,new QTableWidgetItem(statusToDisplay(r->get_kidney_status(),"kidneys")));
-    tb->setItem(4,0,new QTableWidgetItem(statusToDisplay(r->get_gall_bladder_status(),"gall_bladder")));
-    tb->setItem(13,0,new QTableWidgetItem(statusToDisplay(r->get_lymph_status(),"lymph")));
-    tb->setItem(7,0,new QTableWidgetItem(statusToDisplay(r->get_pancreas_status(),"pancreas")));
-    tb->setItem(9,0,new QTableWidgetItem(statusToDisplay(r->get_adrenal_glands_status(),"adrenal_glands")));
+    tb->setItem(0,0,new QTableWidgetItem(status_to_display(r->get_lungs_status(),"lungs")));
+    tb->setItem(5,0,new QTableWidgetItem(status_to_display(r->get_stomach_status(),"stomach")));
+    tb->setItem(2,0,new QTableWidgetItem(status_to_display(r->get_pericardium_status(), "pericardium")));
+    tb->setItem(1,0,new QTableWidgetItem(status_to_display(r->get_heart_status(), "heart")));
+    tb->setItem(10,0,new QTableWidgetItem(status_to_display(r->get_small_intestine_status(),"small_intestine")));
+    tb->setItem(11,0,new QTableWidgetItem(status_to_display(r->get_large_intestine_status(),"large_intestine")));
+    tb->setItem(12,0,new QTableWidgetItem(status_to_display(r->get_bladder_status(),"bladder")));
+    tb->setItem(6,0,new QTableWidgetItem(status_to_display(r->get_spleen_status(),"spleen")));
+    tb->setItem(3,0,new QTableWidgetItem(status_to_display(r->get_liver_status(),"liver")));
+    tb->setItem(8,0,new QTableWidgetItem(status_to_display(r->get_kidney_status(),"kidneys")));
+    tb->setItem(4,0,new QTableWidgetItem(status_to_display(r->get_gall_bladder_status(),"gall_bladder")));
+    tb->setItem(13,0,new QTableWidgetItem(status_to_display(r->get_lymph_status(),"lymph")));
+    tb->setItem(7,0,new QTableWidgetItem(status_to_display(r->get_pancreas_status(),"pancreas")));
+    tb->setItem(9,0,new QTableWidgetItem(status_to_display(r->get_adrenal_glands_status(),"adrenal_glands")));
     disp->setScene(&scene);
     disp->show();
 }
 
+/**
+ * @brief MainWindow::return_to_main_clicked
+ *
+ * This slot is connected to the return_button on the results screen.
+ * This slot returns the application to the main screen.
+ */
 void MainWindow::return_to_main_clicked(){
     ui->main_stack->setCurrentIndex(MAIN_PAGE_ID);
 }
 
-QString MainWindow::statusToDisplay(status s, QString organ){
+/**
+ * @brief MainWindow::status_to_display
+ *
+ * status_to_display is a helper function which returns the correct image
+ * filename based on the parameters status and organ.
+ *
+ * @param s - The status
+ * @param organ  - The organ
+ * @return - The filename of the image
+ */
+QString MainWindow::status_to_display(status s, QString organ){
     switch(s){
         case NEUTRAL:
             scene.addPixmap(neutral_images_hash.value(organ));
@@ -302,4 +426,11 @@ QString MainWindow::statusToDisplay(status s, QString organ){
         default:
             return QString("");
     }
+}
+
+//Destructor
+MainWindow::~MainWindow()
+{
+    delete c;
+    delete ui;
 }

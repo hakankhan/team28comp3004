@@ -1,17 +1,31 @@
 #include "processor.h"
 
+/**
+ * @brief Processor::Processor
+ *
+ * The constructor for the Processor class, creates the
+ * Sensor object (see 'sensor.h').
+ */
 Processor::Processor()
 {
     sensor = new Sensor();
 }
 
+Sensor* Processor::get_sensor(){
+    return sensor;
+}
+
+void Processor::set_sensor(Sensor* s){
+    sensor = s;
+}
+
 /**
  * @brief Processor::perform_scan
  *
- * This function uses RaDoTech algorithms to generate a result based on sensor
- * data. This function is responsible for generating ScanResult objects, to be returned
- * for visual representation by the MainWindow object.
- * sensor_data : Array of 24 statuses (0-5 LH, 6-11 RH, 12-17 LF, 18-23 RF)
+ * perform_scan uses RaDoTech algorithms to generate a result based on sensor
+ * data. This function is responsible for generating ScanResult objects (see 'scanresult.h')
+ * to be returned for visual representation by the MainWindow object.
+ * sensor_data : Array of 24 statuses (see 'sensor.h') (0-5 LH, 6-11 RH, 12-17 LF, 18-23 RF)
  *
  * @return ScanResult, the result of the scan
  */
@@ -73,6 +87,15 @@ ScanResult* Processor::perform_scan(){
     return result;
 }
 
+/**
+ * @brief Processor::get_sensor_data
+ *
+ * get_sensor_data is a helper function used by perform_scan to translate
+ * raw sensor data into status values (see 'sensor.h').
+ *
+ * @param sensor_data - The array of sensor_data to be filled
+ * @return - The filled array of sensor_data
+ */
 status* Processor::get_sensor_data(status* sensor_data){
 
     for(int i = 0; i < 24; i++){
@@ -93,19 +116,10 @@ status* Processor::get_sensor_data(status* sensor_data){
     return sensor_data;
 }
 
-Sensor* Processor::get_sensor(){
-    return sensor;
-}
-
-void Processor::set_sensor(Sensor* s){
-    sensor = s;
-}
-
 /**
  * @brief Processor::~Processor
  *
  * Delete the sensor object if it is allocated.
- *
  */
 Processor::~Processor(){
     if(sensor != NULL){

@@ -26,6 +26,15 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+
+/**
+ * @brief The MainWindow class
+ *
+ * The MainWindow class is responsible for all user interface
+ * rendering, and interaction with the rest of the class structure.
+ * This class holds a Control object (see 'control.h') which serves
+ * as the back-end of this application.
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -47,6 +56,7 @@ class MainWindow : public QMainWindow
         void return_to_main_clicked();
         void charge_battery_button_clicked();
         void set_battery_charge_and_return();
+
     private:
         Ui::MainWindow *ui;
         Control* c;
@@ -55,7 +65,7 @@ class MainWindow : public QMainWindow
         void make_records_list();
         QVector<QDoubleSpinBox*> make_spinbox_vector();
         int current_index_dropdown;
-        QString statusToDisplay(status s, QString organ);
+        QString status_to_display(status s, QString organ);
         QGraphicsScene scene;
         QHash<QString,QPixmap> good_images_hash;
         QHash<QString,QPixmap> neutral_images_hash;

@@ -2,6 +2,13 @@
 #define BATTERY_H
 #define CHARGE_PER_SCAN 5
 
+/**
+ * @brief The Battery class
+ *
+ * The Battery class holds the information regarding the device's
+ * battery, with a function to check if the battery has enough charge to
+ * perform a scan.
+ */
 class Battery
 {
     public:

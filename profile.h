@@ -4,6 +4,14 @@
 #include <QString>
 #include "records.h"
 
+/**
+ * @brief The Profile class
+ *
+ * The Profile class holds all crucial fields for user profiles
+ * on the device. Additionally, the Profile class holds a singular
+ * Records object (see 'records.h') which contains the resutls of
+ * past scans.
+ */
 class Profile
 {
     public:
