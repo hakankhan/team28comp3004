@@ -58,6 +58,11 @@ void MainWindow::set_battery_charge_and_return(){
     c->get_battery()->set_percentage(ui->battery_box->value());
     ui->battery_level->setValue(c->get_battery()->get_percentage());
     ui->battery_charge_button->setVisible(true);
+    if(!c->get_battery()->has_enough_charge()){
+        ui->battery_warning_label->setVisible(true);
+    }else{
+        ui->battery_warning_label->setVisible(false);
+    }
 }
 
 void MainWindow::make_profile_dropdown(){
