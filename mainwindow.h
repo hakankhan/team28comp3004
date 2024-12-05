@@ -56,7 +56,7 @@ class MainWindow : public QMainWindow
         void return_to_main_clicked();
         void charge_battery_button_clicked();
         void set_battery_charge_and_return();
-
+        void toggle_show_hide_labels();
     private:
         Ui::MainWindow *ui;
         Control* c;

@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->return_button,SIGNAL(clicked()),this,SLOT(return_to_main_clicked()));
     connect(ui->battery_charge_button,SIGNAL(clicked()),this,SLOT(charge_battery_button_clicked()));
     connect(ui->battery_save_button,SIGNAL(clicked()),this,SLOT(set_battery_charge_and_return()));
+    connect(ui->label_toggle_button,SIGNAL(clicked()),this,SLOT(toggle_show_hide_labels()));
     srand(time(0));
     make_image_hash();
 }
@@ -426,6 +427,16 @@ QString MainWindow::status_to_display(status s, QString organ){
         default:
             return QString("");
     }
+}
+
+void MainWindow::toggle_show_hide_labels(){
+    bool visible = ui->label_holder->isVisible();
+    if(visible){
+        ui->label_toggle_button->setText("Show Labels");
+    }else{
+        ui->label_toggle_button->setText("Hide Labels");
+    }
+    ui->label_holder->setVisible(!visible);
 }
 
 //Destructor
