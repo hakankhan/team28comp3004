@@ -56,7 +56,7 @@ ScanResult* Processor::perform_scan(){
 
     //set large intestine
     value = sensor_data[LH6] > sensor_data[RH6] ? sensor_data[RH6] : sensor_data[LH6];
-    result->set_heart_status(value);
+    result->set_large_intestine_status(value);
 
     //set spleen & pancreas
     value = sensor_data[LF1] > sensor_data[RF1] ? sensor_data[RF1] : sensor_data[LF1];

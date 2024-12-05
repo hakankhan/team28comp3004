@@ -17,7 +17,7 @@ enum pages {
     EDIT_PROFILE_PAGE_ID = 2,
     RESULTS_PAGE_ID = 3,
     SCAN_PAGE_ID = 4,
-    BATTERY_PAGE = 5
+    BATTERY_PAGE_ID = 5
 };
 
 using namespace std;

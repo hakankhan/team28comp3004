@@ -67,7 +67,7 @@ void MainWindow::load_images(){
  */
 void MainWindow::charge_battery_button_clicked(){
     previous_page_index = ui->main_stack->currentIndex();
-    ui->main_stack->setCurrentIndex(BATTERY_PAGE);
+    ui->main_stack->setCurrentIndex(BATTERY_PAGE_ID);
     ui->battery_charge_button->setVisible(false);
     ui->battery_box->setValue(c->get_battery()->get_percentage());
 }
