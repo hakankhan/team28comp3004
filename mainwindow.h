@@ -70,7 +70,7 @@ class MainWindow : public QMainWindow
         QHash<QString,QPixmap> good_images_hash;
         QHash<QString,QPixmap> neutral_images_hash;
         QHash<QString,QPixmap> bad_images_hash;
-        void make_image_hash();
+        void load_images();
         int previous_page_index;
 };
 #endif // MAINWINDOW_H

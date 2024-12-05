@@ -43,5 +43,16 @@
         <file>images/diagram_neutral/spleen.PNG</file>
         <file>images/diagram_neutral/stomach.PNG</file>
         <file>images/body.PNG</file>
+        <file>images/hands_feet/dot.PNG</file>
+        <file>images/hands_feet/foot inner.PNG</file>
+        <file>images/hands_feet/foot outer.PNG</file>
+        <file>images/hands_feet/foot top.PNG</file>
+        <file>images/hands_feet/hand back.PNG</file>
+        <file>images/hands_feet/hand palm.PNG</file>
+        <file>images/hands_feet/foot inner L.PNG</file>
+        <file>images/hands_feet/foot outer L.PNG</file>
+        <file>images/hands_feet/foot top L.PNG</file>
+        <file>images/hands_feet/hand back L.PNG</file>
+        <file>images/hands_feet/hand palm L.PNG</file>
     </qresource>
 </RCC>

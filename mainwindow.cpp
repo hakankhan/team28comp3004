@@ -37,16 +37,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->battery_save_button,SIGNAL(clicked()),this,SLOT(set_battery_charge_and_return()));
     connect(ui->label_toggle_button,SIGNAL(clicked()),this,SLOT(toggle_show_hide_labels()));
     srand(time(0));
-    make_image_hash();
+    load_images();
 }
 
 /**
- * @brief MainWindow::make_image_hash
+ * @brief MainWindow::load_images
  *
- * make_image_hash initalizes the hashmaps good_imgaes_hash, neutral_images_hash,,
- * and bad_images_hash. These are used to populate the scan results screen.
+ * load_images initalizes the hashmaps good_imgaes_hash, neutral_images_hash,,
+ * and bad_images_hash and the images for the scan screen. These are used to populate the scan results screen.
  */
-void MainWindow::make_image_hash(){
+void MainWindow::load_images(){
     QStringList organs = {"adrenal_glands","bladder","gall_bladder","heart","kidneys",\
                           "large_intestine","liver","lungs","lymph","pancreas","pericardium",\
                           "small_intestine","spleen","stomach"};
