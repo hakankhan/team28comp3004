@@ -44,3 +44,13 @@ HOW TO USE THE PROGRAM:
 5. Battery charging will be required after submitting multiple scans, use the 'Charge Battery' button
 on any screen to modify the battery percentage. Scans cannot be completed if the battery charge is
 insufficient. Each scan currently expends 5%.
+
+MEMBER CONTRIBUTIONS:
+Ben Granger - Back-end class structure design, header file writing, back-end class design (non-collection class), slot implementation
+documentation, UML class diagram, testing and debugging (memory leaks)
+
+Jack Ricketts - Delete Profile functionality, generating random values for scanning, collection classes (full implemtation),
+slot implementation, UML state machine diagrams, requirements traceability matrix
+
+Hakan Khan - All UI design and creation (graphics), slot implementation, MainWindow implementation (private functions), debugging of
+front-end, UML sequence diagrams
