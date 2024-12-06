@@ -49,14 +49,15 @@ class MainWindow : public QMainWindow
         void new_profile_button_clicked();
         void edit_profile_button_clicked();
         void edit_profile_submission();
-        void scan_button_clicked();
+        void take_scan_button_released();
         void delete_profile();
-        void submit_scan_button_clicked();
         void display_scan_results(QListWidgetItem *item);
         void return_to_main_clicked();
         void charge_battery_button_clicked();
         void set_battery_charge_and_return();
         void toggle_show_hide_labels();
+        void add_new_scan_button_clicked();
+        void submit_scan_button_clicked();
     private:
         Ui::MainWindow *ui;
         Control* c;

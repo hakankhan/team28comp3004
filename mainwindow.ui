@@ -2370,6 +2370,19 @@
        <pixmap resource="images.qrc">:/images/hands_feet/dot.PNG</pixmap>
       </property>
      </widget>
+     <widget class="QPushButton" name="take_scan_button">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>0</y>
+        <width>83</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Take Scan</string>
+      </property>
+     </widget>
      <zorder>label_44</zorder>
      <zorder>label_61</zorder>
      <zorder>submit_scan_button</zorder>
@@ -2449,6 +2462,7 @@
      <zorder>label_82</zorder>
      <zorder>label_80</zorder>
      <zorder>label_74</zorder>
+     <zorder>take_scan_button</zorder>
     </widget>
     <widget class="QWidget" name="battery_page">
      <widget class="QSpinBox" name="battery_box">

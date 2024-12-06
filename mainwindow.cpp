@@ -29,13 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->delete_profile_button, SIGNAL(clicked()), this, SLOT(delete_profile()));
     connect(ui->edit_profile_button, SIGNAL(clicked()), this, SLOT(edit_profile_button_clicked()));
     connect(ui->edit_submit_button, SIGNAL(clicked()), this, SLOT(edit_profile_submission()));
-    connect(ui->new_scan_button, SIGNAL(clicked()), this, SLOT(scan_button_clicked()));
+    connect(ui->take_scan_button, SIGNAL(released()), this, SLOT(take_scan_button_released()));
     connect(ui->submit_scan_button, SIGNAL(clicked()), this, SLOT(submit_scan_button_clicked()));
     connect(ui->scan_results_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(display_scan_results(QListWidgetItem*)));
     connect(ui->return_button,SIGNAL(clicked()),this,SLOT(return_to_main_clicked()));
     connect(ui->battery_charge_button,SIGNAL(clicked()),this,SLOT(charge_battery_button_clicked()));
     connect(ui->battery_save_button,SIGNAL(clicked()),this,SLOT(set_battery_charge_and_return()));
     connect(ui->label_toggle_button,SIGNAL(clicked()),this,SLOT(toggle_show_hide_labels()));
+    connect(ui->new_scan_button,SIGNAL(clicked()),this,SLOT(add_new_scan_button_clicked()));
     srand(time(0));
     load_images();
 }
@@ -265,27 +266,30 @@ void MainWindow::delete_profile(){
     make_records_list();
 }
 
-/**
- * @brief MainWindow::scan_button_clicked
- *
- * This slot is connected to the new_scan_button on the main screen. This
- * slot populates the sensor data with random values, and prompts the user
- * to change the values for the simulated data.
- */
-void MainWindow::scan_button_clicked(){
+void MainWindow::add_new_scan_button_clicked(){
     if(!c->get_battery()->has_enough_charge()){
         ui->battery_warning_label->setVisible(true);
         return;
     }
     c->deplete_battery();
     ui->battery_level->setValue(c->get_battery()->get_percentage());
+    ui->main_stack->setCurrentIndex(SCAN_PAGE_ID);
+}
+
+/**
+ * @brief MainWindow::scan_button_clicked
+ *
+ * This slot is connected to the take_scan_button on the scan screen. This
+ * slot populates the sensor data with random values, and prompts the user
+ * to change the values for the simulated data.
+ */
+void MainWindow::take_scan_button_released(){
     QVector<QDoubleSpinBox*> spinboxes = make_spinbox_vector();
     Sensor* s = c->get_processor()->get_sensor();
     for(int i = 0; i < 24; i++){
         s->set_value_at_index(i, rand() % 12 + 1);
         spinboxes[i]->setValue(s->get_value_at_index(i));
     }
-    ui->main_stack->setCurrentIndex(SCAN_PAGE_ID);
 }
 
 /**
