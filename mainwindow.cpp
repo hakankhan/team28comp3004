@@ -265,7 +265,12 @@ void MainWindow::delete_profile(){
     make_profile_dropdown();
     make_records_list();
 }
-
+/**
+ * @brief MainWindow::add_new_scan_button_clicked
+ *
+ * This slot is connected to the add_new_scan_button on the main screen. This slot switches the view
+ * to the scan screen if the battery level is above the threshold it takes for a scan
+*/
 void MainWindow::add_new_scan_button_clicked(){
     if(!c->get_battery()->has_enough_charge()){
         ui->battery_warning_label->setVisible(true);
@@ -277,7 +282,7 @@ void MainWindow::add_new_scan_button_clicked(){
 }
 
 /**
- * @brief MainWindow::scan_button_clicked
+ * @brief MainWindow::take_scan_button_clicked
  *
  * This slot is connected to the take_scan_button on the scan screen. This
  * slot populates the sensor data with random values, and prompts the user
